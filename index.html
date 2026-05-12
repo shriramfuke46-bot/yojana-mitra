@@ -1,242 +1,200 @@
-<!DOCTYPE html>
-<html lang="mr" data-theme="light">
+    <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Government Yojana Mitra</title>
-<style>
-:root{--bg:#f1f5f9;--card:#fff;--nav:#1a6b3c;--text:#1e293b;--sub:#64748b;--border:#e2e8f0;--inp:#fff;--inpb:#cbd5e1;--modal:#fff;--filter:#fff;}
-[data-theme="dark"]{--bg:#0f172a;--card:#1e293b;--nav:#064e3b;--text:#f1f5f9;--sub:#94a3b8;--border:#334155;--inp:#334155;--inpb:#475569;--modal:#1e293b;--filter:#1e293b;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
-nav{background:var(--nav);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;gap:6px;}
-.logo{color:#fff;font-size:13px;font-weight:700;white-space:nowrap;}
-.nav-right{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.nb{background:rgba(255,255,255,0.18);color:#fff;border:none;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;position:relative;}
-.nb:hover{background:rgba(255,255,255,0.3);}
-.nb.yellow{background:#f59e0b;}.nb.red{background:#dc2626;}
-.nb.lang-btn{background:#0ea5e9;letter-spacing:.3px;}
-.ndot{position:absolute;top:3px;right:3px;width:7px;height:7px;background:#ef4444;border-radius:50%;}
-.hero{background:linear-gradient(135deg,#166534,#16a34a);padding:26px 14px;text-align:center;}
-.hero h1{color:#fff;font-size:19px;font-weight:700;margin-bottom:5px;}
-.hero p{color:rgba(255,255,255,0.85);font-size:13px;margin-bottom:14px;}
-.sw{display:flex;gap:7px;max-width:520px;margin:0 auto;}
-.sw input{flex:1;padding:10px 13px;border:none;border-radius:8px;font-size:13px;outline:none;}
-.sw button{background:#f59e0b;color:#fff;border:none;padding:10px 15px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
-.ticker{background:#fff7ed;border-bottom:1px solid #fed7aa;padding:7px 14px;font-size:12px;color:#92400e;overflow:hidden;white-space:nowrap;}
-[data-theme="dark"] .ticker{background:#1c1400;color:#fcd34d;border-color:#334155;}
-.ticker-inner{display:inline-block;animation:tick 32s linear infinite;}
-@keyframes tick{from{transform:translateX(100vw);}to{transform:translateX(-100%);}}
-.main-tabs{display:flex;background:var(--card);border-bottom:2px solid var(--border);overflow-x:auto;position:sticky;top:48px;z-index:100;}
-.main-tab{padding:11px 16px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;color:var(--sub);transition:all .2s;}
-.main-tab.active{color:#16a34a;border-bottom-color:#16a34a;}
-.container{max-width:1020px;margin:0 auto;padding:14px 12px;}
-.sec-title{font-size:15px;font-weight:700;color:#16a34a;margin-bottom:10px;padding-bottom:5px;border-bottom:2px solid #16a34a;}
-.sec-sub{font-size:12px;color:var(--sub);margin-bottom:13px;margin-top:-6px;}
-.filter-box{background:var(--filter);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:14px;}
-.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;}
-.fg{display:flex;flex-direction:column;gap:3px;}
-.fg label{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;}
-.fg select{padding:7px 8px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:12px;outline:none;}
-.fg select:focus{border-color:#16a34a;}
-.fbtns{display:flex;gap:7px;margin-top:9px;}
-.fb{padding:7px 14px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;border:none;}
-.fb-a{background:#16a34a;color:#fff;}.fb-c{background:var(--border);color:var(--text);}
-.rinfo{font-size:12px;color:var(--sub);margin-top:5px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:11px;margin-bottom:18px;}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:7px;position:relative;}
-.card.is-new{border-color:#f59e0b;}.card.bookmarked{border-color:#a855f7;}
-.new-tag{position:absolute;top:-7px;right:10px;background:#f59e0b;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
-.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:5px;}
-.badge{font-size:10px;padding:3px 8px;border-radius:16px;font-weight:700;white-space:nowrap;}
-.b-green{background:#dcfce7;color:#166534;}.b-blue{background:#dbeafe;color:#1e40af;}
-.b-orange{background:#ffedd5;color:#9a3412;}.b-purple{background:#ede9fe;color:#5b21b6;}
-.b-red{background:#fee2e2;color:#991b1b;}.b-yellow{background:#fef9c3;color:#854d0e;}
-.b-pink{background:#fce7f3;color:#9d174d;}.b-teal{background:#ccfbf1;color:#0f766e;}
-.b-indigo{background:#e0e7ff;color:#3730a3;}.b-sky{background:#e0f2fe;color:#0369a1;}
-.amt{font-size:11px;font-weight:700;color:#16a34a;background:#f0fdf4;padding:2px 7px;border-radius:6px;white-space:nowrap;}
-.bmbtn{background:none;border:none;font-size:17px;cursor:pointer;padding:1px;line-height:1;flex-shrink:0;}
-.card h3{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;}
-.card p{font-size:12px;color:var(--sub);line-height:1.55;flex:1;}
-.dates{display:flex;gap:5px;flex-wrap:wrap;}
-.dc{font-size:10px;padding:3px 7px;border-radius:5px;font-weight:600;}
-.dc-s{background:#dbeafe;color:#1e40af;}.dc-e{background:#fee2e2;color:#991b1b;}
-.actions{display:flex;gap:5px;flex-wrap:wrap;}
-.btn{font-size:11px;color:#fff;padding:5px 9px;border-radius:6px;font-weight:600;cursor:pointer;border:none;white-space:nowrap;text-decoration:none;display:inline-block;}
-.btn-g{background:#16a34a;}.btn-b{background:#2563eb;}.btn-w{background:#25D366;}.btn-r{background:#ef4444;}
-.npanel{position:fixed;top:54px;right:10px;width:285px;background:var(--modal);border:1px solid var(--border);border-radius:13px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:300;display:none;max-height:360px;overflow-y:auto;}
-.npanel.open{display:block;}
-.nh{padding:10px 13px;font-size:13px;font-weight:700;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;}
-.ni{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;display:flex;gap:7px;}
-.ni:last-child{border-bottom:none;}
-.mr{font-size:11px;color:#16a34a;cursor:pointer;font-weight:600;}
-.page{display:none;}.page.active{display:block;}
-.back-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:14px;}
-.apanel{background:var(--card);border:2px solid #16a34a;border-radius:13px;padding:15px;margin-bottom:16px;display:none;}
-.apanel h3{font-size:14px;color:#16a34a;font-weight:700;margin-bottom:11px;}
-.aform{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.aform .full{grid-column:1/-1;}
-.fg2{display:flex;flex-direction:column;gap:3px;}
-.fg2 label{font-size:11px;font-weight:700;color:var(--sub);}
-.fg2 input,.fg2 select,.fg2 textarea{padding:8px 9px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:12px;outline:none;font-family:inherit;}
-.fg2 textarea{resize:vertical;min-height:55px;}
-.abtn{background:#16a34a;color:#fff;border:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;margin-top:6px;}
-.sucmsg{color:#16a34a;font-size:12px;font-weight:600;margin-top:6px;display:none;}
-.no-res{text-align:center;padding:26px;color:var(--sub);font-size:13px;display:none;}
-.ad-box{background:#f0fdf4;border:1px dashed #86efac;border-radius:9px;padding:10px;text-align:center;font-size:12px;color:#16a34a;margin-bottom:15px;}
-[data-theme="dark"] .ad-box{background:#052e16;border-color:#166534;color:#4ade80;}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;}
-.overlay.open{display:flex;}
-.modal{background:var(--modal);border-radius:14px;padding:20px;max-width:460px;width:92%;position:relative;max-height:86vh;overflow-y:auto;}
-.modal h2{font-size:15px;color:#16a34a;margin-bottom:12px;padding-right:22px;}
-.mclose{position:absolute;top:11px;right:13px;font-size:19px;cursor:pointer;background:none;border:none;color:var(--sub);}
-.ir{display:flex;gap:7px;margin-bottom:7px;}
-.il{font-size:11px;font-weight:700;color:#16a34a;min-width:95px;flex-shrink:0;}
-.iv{font-size:12px;color:var(--text);line-height:1.5;}
-.mwa{display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:#fff;border:none;padding:9px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;width:100%;margin-top:11px;}
-.chat-msg{display:flex;flex-direction:column;}
-.chat-msg.user{align-items:flex-end;}
-.chat-msg.bot{align-items:flex-start;}
-.chat-bubble{max-width:88%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.6;}
-.bot-bubble{background:var(--filter);border:1px solid var(--border);color:var(--text);}
-.user-bubble{background:#16a34a;color:#fff;}
-.chat-bubble em{color:#16a34a;cursor:pointer;font-style:normal;text-decoration:underline;}
-[data-theme="dark"] .chat-bubble em{color:#4ade80;}
-.typing{display:flex;gap:4px;align-items:center;padding:10px 13px;}
-.typing span{width:7px;height:7px;background:var(--sub);border-radius:50%;animation:bounce .9s infinite;}
-.typing span:nth-child(2){animation-delay:.2s;}
-.typing span:nth-child(3){animation-delay:.4s;}
-@keyframes bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-7px);}}
-.lbox h2{font-size:17px;color:#16a34a;margin-bottom:4px;}
-.lbox p{font-size:12px;color:var(--sub);margin-bottom:15px;}
-.linp{width:100%;padding:9px 11px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:13px;margin-bottom:9px;outline:none;}
-.linp:focus{border-color:#16a34a;}
-.lbtn{width:100%;background:#16a34a;color:#fff;border:none;padding:10px;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;}
-.lerr{color:#ef4444;font-size:12px;margin-top:6px;display:none;}
-footer{background:var(--nav);color:rgba(255,255,255,.82);text-align:center;padding:13px;font-size:12px;}
-@media(max-width:540px){.aform{grid-template-columns:1fr;}.aform .full{grid-column:1;}.filter-row{grid-template-columns:1fr 1fr;}.hero h1{font-size:16px;}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yojana Mitra</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#222;
+    }
+
+    header{
+      background:linear-gradient(135deg,#2563eb,#1e40af);
+      color:white;
+      padding:20px;
+      text-align:center;
+    }
+
+    header h1{
+      font-size:38px;
+      margin-bottom:10px;
+    }
+
+    header p{
+      font-size:18px;
+    }
+
+    nav{
+      background:#0f172a;
+      padding:15px;
+      text-align:center;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin:0 15px;
+      font-size:17px;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#38bdf8;
+    }
+
+    .hero{
+      padding:60px 20px;
+      text-align:center;
+    }
+
+    .hero h2{
+      font-size:42px;
+      color:#1e3a8a;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:18px;
+      max-width:700px;
+      margin:auto;
+      line-height:1.6;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:25px;
+      padding:14px 28px;
+      background:#2563eb;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:18px;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-top:40px;
+      font-size:34px;
+      color:#1e293b;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      padding:40px;
+    }
+
+    .card{
+      background:white;
+      padding:25px;
+      border-radius:14px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      color:#2563eb;
+    }
+
+    .card p{
+      line-height:1.5;
+    }
+
+    footer{
+      background:#0f172a;
+      color:white;
+      text-align:center;
+      padding:18px;
+      margin-top:40px;
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="logo">🏛 Govt Yojana Mitra</div>
-  <div class="nav-right">
-    <button class="nb lang-btn" id="langBtn" onclick="toggleLang()">🇬🇧 EN</button>
-    <button class="nb" onclick="toggleDark()" id="darkBtn">🌙</button>
-    <button class="nb" onclick="showPage('bmark')">⭐ <span id="bmc">0</span></button>
-    <button class="nb" onclick="toggleNotif()" id="nBtn" style="position:relative;">🔔 <span id="nc">0</span><span class="ndot" id="ndot"></span></button>
-    <button class="nb yellow" id="adminBtn" onclick="showLogin()">🔐 Admin</button>
-  </div>
-</nav>
+  <header>
+    <h1>Yojana Mitra</h1>
+    <p>Government Scholarship & Exam Information Portal</p>
+  </header>
 
-<div class="npanel" id="npanel">
-  <div class="nh" id="nh_title">🔔 Notifications <span class="mr" id="markReadBtn" onclick="markRead()">सर्व वाचले</span></div>
-  <div id="nlist"></div>
-</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Scholarships</a>
+    <a href="#">Exams</a>
+    <a href="#">Notes</a>
+    <a href="#">Contact</a>
+  </nav>
 
-<div class="hero">
-  <h1 id="hero_h">🎓 सर्व Scholarships एकाच ठिकाणी</h1>
-  <p id="hero_p">केंद्र सरकार · राज्य सरकार · खाजगी संस्था — सोप्या मराठीत संपूर्ण माहिती</p>
-  <div class="sw">
-    <input type="text" id="sInput" placeholder="Scholarship शोधा... उदा. SC, Medical, मुली" oninput="doSearch()"/>
-    <button onclick="doSearch()" id="searchBtn">🔍 शोधा</button>
-  </div>
-</div>
+  <section class="hero">
+    <h2>Welcome to Yojana Mitra</h2>
+    <p>
+      Find latest scholarships, competitive exam updates,
+      free study materials, notes, PYQs and government schemes
+      in one place.
+    </p>
 
-<div class="ticker">
-  <span class="ticker-inner" id="tickerTxt">🔴 NSP Portal 2025 अर्ज सुरू &nbsp;|&nbsp; MahaDBT Scholarship नोंदणी चालू &nbsp;|&nbsp; NMMS परीक्षा नोव्हेंबर 2025 &nbsp;|&nbsp; Tata Pankh Scholarship नवीन &nbsp;|&nbsp; HDFC Parivartan Scholarship खुली &nbsp;|&nbsp; AICTE Pragati मुलींसाठी</span>
-</div>
+    <a href="#" class="btn">Explore Now</a>
+  </section>
 
-<div class="main-tabs" id="mainTabs">
-  <div class="main-tab active" id="tab_c" onclick="showPage('central')">🏛 केंद्र</div>
-  <div class="main-tab" id="tab_s" onclick="showPage('state')">🗺️ राज्य</div>
-  <div class="main-tab" id="tab_p" onclick="showPage('private')">🏢 खाजगी</div>
-  <div class="main-tab" id="tab_ai" onclick="showPage('chatbot')">🤖 AI Chat</div>
-  <div class="main-tab" id="tab_e" onclick="showPage('eligibility')">✅ Eligibility</div>
-  <div class="main-tab" id="tab_b" onclick="showPage('bmark')">⭐ Saved</div>
-</div>
+  <h2 class="section-title">Our Services</h2>
 
-<div class="container">
+  <section class="cards">
 
-<!-- CENTRAL PAGE -->
-<div class="page active" id="pg-central">
-  <div class="apanel" id="adminPanel">
-    <h3 id="a_title">⚙️ नवीन Scholarship Add करा</h3>
-    <div class="aform">
-      <div class="fg2"><label id="a_name">नाव *</label><input id="f_t" placeholder="Scholarship नाव"/></div>
-      <div class="fg2"><label id="a_sec">Section</label>
-        <select id="f_sec"><option value="central" id="sec_c">केंद्र सरकार</option><option value="state" id="sec_s">राज्य सरकार</option><option value="private" id="sec_p">खाजगी</option></select></div>
-      <div class="fg2"><label id="a_cat">शिक्षण स्तर</label>
-        <select id="f_cat"><option value="all" id="fc_all">सर्व</option><option value="10vi" id="fc_10">10वी</option><option value="12vi" id="fc_12">12वी</option><option value="iti" id="fc_iti">ITI/Diploma</option><option value="grad" id="fc_g">Graduation</option><option value="pg" id="fc_pg">PG/PhD</option><option value="pro" id="fc_pr">Professional</option></select></div>
-      <div class="fg2"><label id="a_cast">प्रवर्ग</label>
-        <select id="f_caste"><option value="all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS</option><option value="minority">Minority</option><option value="sebc">SEBC</option></select></div>
-      <div class="fg2"><label id="a_gen">लिंग</label>
-        <select id="f_gen"><option value="all" id="fg_all">सर्व</option><option value="female" id="fg_f">मुली</option><option value="male" id="fg_m">मुले</option></select></div>
-      <div class="fg2"><label id="a_amt">रक्कम</label><input id="f_r" placeholder="₹25,000 पर्यंत"/></div>
-      <div class="fg2 full"><label id="a_desc">माहिती *</label><textarea id="f_d" placeholder="Scholarship बद्दल सविस्तर माहिती..."></textarea></div>
-      <div class="fg2"><label id="a_labh">लाभार्थी</label><input id="f_l" placeholder="SC/OBC विद्यार्थी"/></div>
-      <div class="fg2"><label id="a_start">अर्ज सुरू</label><input id="f_s" placeholder="जुलै 2025"/></div>
-      <div class="fg2"><label id="a_end">शेवटची तारीख</label><input id="f_e" placeholder="डिसेंबर 2025"/></div>
-      <div class="fg2"><label id="a_link">Official Link</label><input id="f_lnk" placeholder="https://..."/></div>
-      <div class="fg2"><label id="a_doc">कागदपत्रे</label><input id="f_doc" placeholder="आधार, मार्कशीट"/></div>
+    <div class="card">
+      <h3>Scholarships</h3>
+      <p>
+        Get latest government and private scholarship updates
+        with eligibility and apply links.
+      </p>
     </div>
-    <button class="abtn" id="addBtn" onclick="addSch()">➕ Add करा</button>
-    <div class="sucmsg" id="sucmsg">✅ यशस्वीरीत्या add केली!</div>
-  </div>
-  <div class="ad-box" id="ad1">📢 Google AdSense येथे दिसेल</div>
-  <div class="sec-title" id="sec_c_title">🏛 केंद्र सरकार Scholarships <span id="c-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
-  <p class="sec-sub" id="sec_c_sub">NSP Portal, UGC, AICTE, DST द्वारे — सर्व भारतीय विद्यार्थ्यांसाठी</p>
-  <div class="filter-box">
-    <div class="filter-row">
-      <div class="fg"><label id="lc_edu">शिक्षण स्तर</label><select id="cf_edu" onchange="renderSection('central')">
-        <option value="all" id="ce_all">सर्व</option><option value="10vi" id="ce_10">10वी</option><option value="12vi" id="ce_12">12वी</option><option value="iti" id="ce_iti">ITI/Diploma</option><option value="grad" id="ce_g">Graduation</option><option value="pg" id="ce_pg">PG/PhD</option><option value="pro" id="ce_pr">Professional</option></select></div>
-      <div class="fg"><label id="lc_cast">प्रवर्ग</label><select id="cf_caste" onchange="renderSection('central')">
-        <option value="all" id="cc_all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS/General</option><option value="minority">Minority</option></select></div>
-      <div class="fg"><label id="lc_gen">लिंग</label><select id="cf_gen" onchange="renderSection('central')">
-        <option value="all" id="cg_all">सर्व</option><option value="female" id="cg_f">मुली</option><option value="male" id="cg_m">मुले</option></select></div>
-      <div class="fg"><label id="lc_amt">रक्कम</label><select id="cf_amt" onchange="renderSection('central')">
-        <option value="all" id="ca_all">सर्व</option><option value="10k">₹10,000+</option><option value="25k">₹25,000+</option><option value="50k">₹50,000+</option></select></div>
-    </div>
-    <div class="fbtns"><button class="fb fb-a" id="cApply" onclick="renderSection('central')">✅ Filter</button><button class="fb fb-c" id="cClear" onclick="clearF('c');renderSection('central')">🔄 Clear</button></div>
-    <div class="rinfo" id="c-rinfo"></div>
-  </div>
-  <div class="grid" id="c-grid"></div>
-  <div class="no-res" id="c-nores">😔 कोणतीही Scholarship सापडली नाही.</div>
-</div>
 
-<!-- STATE PAGE -->
-<div class="page" id="pg-state">
-  <div class="ad-box" id="ad2">📢 Google AdSense येथे दिसेल</div>
-  <div class="sec-title" id="sec_s_title">🗺️ राज्य सरकार Scholarships <span id="s-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
-  <p class="sec-sub" id="sec_s_sub">Maharashtra, UP, Karnataka, Rajasthan सहित सर्व राज्यांच्या Scholarships</p>
-  <div class="filter-box">
-    <div class="filter-row">
-      <div class="fg"><label id="ls_state">राज्य</label><select id="sf_state" onchange="renderSection('state')">
-        <option value="all" id="ss_all">सर्व राज्ये</option>
-        <option value="mh">Maharashtra</option><option value="up">Uttar Pradesh</option>
-        <option value="ka">Karnataka</option><option value="rj">Rajasthan</option>
-        <option value="mp">Madhya Pradesh</option><option value="tn">Tamil Nadu</option>
-        <option value="wb">West Bengal</option><option value="gj">Gujarat</option></select></div>
-      <div class="fg"><label id="ls_cast">प्रवर्ग</label><select id="sf_caste" onchange="renderSection('state')">
-        <option value="all" id="sc_all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS</option><option value="sebc">SEBC</option></select></div>
-      <div class="fg"><label id="ls_edu">शिक्षण स्तर</label><select id="sf_edu" onchange="renderSection('state')">
-        <option value="all" id="se_all">सर्व</option><option value="10vi" id="se_10">10वी</option><option value="12vi" id="se_12">12वी</option><option value="iti" id="se_iti">ITI</option><option value="grad" id="se_g">Graduation</option><option value="pg" id="se_pg">PG</option><option value="pro" id="se_pr">Professional</option></select></div>
-      <div class="fg"><label id="ls_gen">लिंग</label><select id="sf_gen" onchange="renderSection('state')">
-        <option value="all" id="sg_all">सर्व</option><option value="female" id="sg_f">मुली</option><option value="male" id="sg_m">मुले</option></select></div>
+    <div class="card">
+      <h3>Study Material</h3>
+      <p>
+        Download free PDFs, handwritten notes and exam preparation material.
+      </p>
     </div>
-    <div class="fbtns"><button class="fb fb-a" id="sApply" onclick="renderSection('state')">✅ Filter</button><button class="fb fb-c" id="sClear" onclick="clearF('s');renderSection('state')">🔄 Clear</button></div>
-    <div class="rinfo" id="s-rinfo"></div>
-  </div>
-  <div class="grid" id="s-grid"></div>
-  <div class="no-res" id="s-nores">😔 कोणतीही Scholarship सापडली नाही.</div>
-</div>
 
-<!-- PRIVATE PAGE -->
-<div class="page" id="pg-private">
-  <div class="ad-box" id="ad3">📢 Google AdSense येथे दिसेल</div>
-  <div class="sec-title" id="sec_p_title">🏢 खाजगी संस्था Scholarships <span id="p-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
-  <p class="sec-sub" id="sec_p_sub">Tata, Reliance, HDFC, Mahindra, Aditya Birla सारख्या मोठ्या कंपन्यांकडून</p>
-  <div class="filter-box">
-    <div class="filter-row">
-      <div class="fg"><label 
+    <div class="card">
+      <h3>Previous Papers</h3>
+      <p>
+        Access previous year question papers for SSC, Railway, MPSC and more.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Latest Updates</h3>
+      <p>
+        Stay updated with exam notifications, admit cards and results.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Yojana Mitra | Designed by Shriram</p>
+  </footer>
+
+</body>
+      </html>
