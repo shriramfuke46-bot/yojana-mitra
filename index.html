@@ -1,200 +1,647 @@
-    <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="mr" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yojana Mitra</title>
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
-
-    body{
-      background:#f4f7fb;
-      color:#222;
-    }
-
-    header{
-      background:linear-gradient(135deg,#2563eb,#1e40af);
-      color:white;
-      padding:20px;
-      text-align:center;
-    }
-
-    header h1{
-      font-size:38px;
-      margin-bottom:10px;
-    }
-
-    header p{
-      font-size:18px;
-    }
-
-    nav{
-      background:#0f172a;
-      padding:15px;
-      text-align:center;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin:0 15px;
-      font-size:17px;
-      transition:0.3s;
-    }
-
-    nav a:hover{
-      color:#38bdf8;
-    }
-
-    .hero{
-      padding:60px 20px;
-      text-align:center;
-    }
-
-    .hero h2{
-      font-size:42px;
-      color:#1e3a8a;
-      margin-bottom:15px;
-    }
-
-    .hero p{
-      font-size:18px;
-      max-width:700px;
-      margin:auto;
-      line-height:1.6;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:25px;
-      padding:14px 28px;
-      background:#2563eb;
-      color:white;
-      text-decoration:none;
-      border-radius:8px;
-      font-size:18px;
-      transition:0.3s;
-    }
-
-    .btn:hover{
-      background:#1d4ed8;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-top:40px;
-      font-size:34px;
-      color:#1e293b;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-      padding:40px;
-    }
-
-    .card{
-      background:white;
-      padding:25px;
-      border-radius:14px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      transition:0.3s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-    }
-
-    .card h3{
-      margin-bottom:12px;
-      color:#2563eb;
-    }
-
-    .card p{
-      line-height:1.5;
-    }
-
-    footer{
-      background:#0f172a;
-      color:white;
-      text-align:center;
-      padding:18px;
-      margin-top:40px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Yojana Mitra - Scholarship</title>
+<style>
+:root{--bg:#f1f5f9;--card:#fff;--nav:#1a6b3c;--text:#1e293b;--sub:#64748b;--border:#e2e8f0;--inp:#fff;--inpb:#cbd5e1;--modal:#fff;--filter:#fff;}
+[data-theme="dark"]{--bg:#0f172a;--card:#1e293b;--nav:#064e3b;--text:#f1f5f9;--sub:#94a3b8;--border:#334155;--inp:#334155;--inpb:#475569;--modal:#1e293b;--filter:#1e293b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+nav{background:var(--nav);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;gap:6px;}
+.logo{color:#fff;font-size:13px;font-weight:700;white-space:nowrap;}
+.nav-right{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.nb{background:rgba(255,255,255,0.18);color:#fff;border:none;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;position:relative;}
+.nb:hover{background:rgba(255,255,255,0.3);}
+.nb.yellow{background:#f59e0b;}.nb.red{background:#dc2626;}
+.nb.lang-btn{background:#0ea5e9;}
+.ndot{position:absolute;top:3px;right:3px;width:7px;height:7px;background:#ef4444;border-radius:50%;}
+.hero{background:linear-gradient(135deg,#166534,#16a34a);padding:26px 14px;text-align:center;}
+.hero h1{color:#fff;font-size:19px;font-weight:700;margin-bottom:5px;}
+.hero p{color:rgba(255,255,255,0.85);font-size:13px;margin-bottom:14px;}
+.sw{display:flex;gap:7px;max-width:520px;margin:0 auto;}
+.sw input{flex:1;padding:10px 13px;border:none;border-radius:8px;font-size:13px;outline:none;}
+.sw button{background:#f59e0b;color:#fff;border:none;padding:10px 15px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;}
+.ticker{background:#fff7ed;border-bottom:1px solid #fed7aa;padding:7px 14px;font-size:12px;color:#92400e;overflow:hidden;white-space:nowrap;}
+[data-theme="dark"] .ticker{background:#1c1400;color:#fcd34d;border-color:#334155;}
+.ticker-inner{display:inline-block;animation:tick 32s linear infinite;}
+@keyframes tick{from{transform:translateX(100vw);}to{transform:translateX(-100%);}}
+.main-tabs{display:flex;background:var(--card);border-bottom:2px solid var(--border);overflow-x:auto;position:sticky;top:48px;z-index:100;}
+.main-tab{padding:10px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;color:var(--sub);transition:all .2s;}
+.main-tab.active{color:#16a34a;border-bottom-color:#16a34a;}
+.container{max-width:1020px;margin:0 auto;padding:14px 12px;}
+.sec-title{font-size:15px;font-weight:700;color:#16a34a;margin-bottom:10px;padding-bottom:5px;border-bottom:2px solid #16a34a;}
+.sec-sub{font-size:12px;color:var(--sub);margin-bottom:13px;margin-top:-6px;}
+.filter-box{background:var(--filter);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:14px;}
+.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;}
+.fg{display:flex;flex-direction:column;gap:3px;}
+.fg label{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;}
+.fg select{padding:7px 8px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:12px;outline:none;}
+.fg select:focus{border-color:#16a34a;}
+.fbtns{display:flex;gap:7px;margin-top:9px;}
+.fb{padding:7px 14px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;border:none;}
+.fb-a{background:#16a34a;color:#fff;}.fb-c{background:var(--border);color:var(--text);}
+.rinfo{font-size:12px;color:var(--sub);margin-top:5px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:11px;margin-bottom:18px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:7px;position:relative;}
+.card.is-new{border-color:#f59e0b;}.card.bookmarked{border-color:#a855f7;}
+.new-tag{position:absolute;top:-7px;right:10px;background:#f59e0b;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:5px;}
+.badge{font-size:10px;padding:3px 8px;border-radius:16px;font-weight:700;white-space:nowrap;}
+.b-green{background:#dcfce7;color:#166534;}.b-blue{background:#dbeafe;color:#1e40af;}
+.b-orange{background:#ffedd5;color:#9a3412;}.b-purple{background:#ede9fe;color:#5b21b6;}
+.b-red{background:#fee2e2;color:#991b1b;}.b-yellow{background:#fef9c3;color:#854d0e;}
+.b-pink{background:#fce7f3;color:#9d174d;}.b-teal{background:#ccfbf1;color:#0f766e;}
+.b-indigo{background:#e0e7ff;color:#3730a3;}
+.amt{font-size:11px;font-weight:700;color:#16a34a;background:#f0fdf4;padding:2px 7px;border-radius:6px;white-space:nowrap;}
+.bmbtn{background:none;border:none;font-size:17px;cursor:pointer;padding:1px;line-height:1;flex-shrink:0;}
+.card h3{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;}
+.card p{font-size:12px;color:var(--sub);line-height:1.55;flex:1;}
+.dates{display:flex;gap:5px;flex-wrap:wrap;}
+.dc{font-size:10px;padding:3px 7px;border-radius:5px;font-weight:600;}
+.dc-s{background:#dbeafe;color:#1e40af;}.dc-e{background:#fee2e2;color:#991b1b;}
+.actions{display:flex;gap:5px;flex-wrap:wrap;}
+.btn{font-size:11px;color:#fff;padding:5px 9px;border-radius:6px;font-weight:600;cursor:pointer;border:none;white-space:nowrap;text-decoration:none;display:inline-block;}
+.btn-g{background:#16a34a;}.btn-b{background:#2563eb;}.btn-w{background:#25D366;}.btn-r{background:#ef4444;}
+.npanel{position:fixed;top:54px;right:10px;width:285px;background:var(--modal);border:1px solid var(--border);border-radius:13px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:300;display:none;max-height:360px;overflow-y:auto;}
+.npanel.open{display:block;}
+.nh{padding:10px 13px;font-size:13px;font-weight:700;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;}
+.ni{padding:9px 12px;border-bottom:1px solid var(--border);font-size:12px;display:flex;gap:7px;}
+.ni:last-child{border-bottom:none;}
+.mr-btn{font-size:11px;color:#16a34a;cursor:pointer;font-weight:600;}
+.page{display:none;}.page.active{display:block;}
+.back-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:7px 13px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:14px;}
+.apanel{background:var(--card);border:2px solid #16a34a;border-radius:13px;padding:15px;margin-bottom:16px;display:none;}
+.apanel h3{font-size:14px;color:#16a34a;font-weight:700;margin-bottom:11px;}
+.aform{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.aform .full{grid-column:1/-1;}
+.fg2{display:flex;flex-direction:column;gap:3px;}
+.fg2 label{font-size:11px;font-weight:700;color:var(--sub);}
+.fg2 input,.fg2 select,.fg2 textarea{padding:8px 9px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:12px;outline:none;font-family:inherit;}
+.fg2 textarea{resize:vertical;min-height:55px;}
+.abtn{background:#16a34a;color:#fff;border:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;margin-top:6px;}
+.sucmsg{color:#16a34a;font-size:12px;font-weight:600;margin-top:6px;display:none;}
+.no-res{text-align:center;padding:26px;color:var(--sub);font-size:13px;display:none;}
+.ad-box{background:#f0fdf4;border:1px dashed #86efac;border-radius:9px;padding:10px;text-align:center;font-size:12px;color:#16a34a;margin-bottom:15px;}
+[data-theme="dark"] .ad-box{background:#052e16;border-color:#166534;color:#4ade80;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:center;justify-content:center;}
+.overlay.open{display:flex;}
+.modal{background:var(--modal);border-radius:14px;padding:20px;max-width:460px;width:92%;position:relative;max-height:86vh;overflow-y:auto;}
+.modal h2{font-size:15px;color:#16a34a;margin-bottom:12px;padding-right:22px;}
+.mclose{position:absolute;top:11px;right:13px;font-size:19px;cursor:pointer;background:none;border:none;color:var(--sub);}
+.ir{display:flex;gap:7px;margin-bottom:7px;}
+.il{font-size:11px;font-weight:700;color:#16a34a;min-width:95px;flex-shrink:0;}
+.iv{font-size:12px;color:var(--text);line-height:1.5;}
+.mwa{display:flex;align-items:center;justify-content:center;gap:7px;background:#25D366;color:#fff;border:none;padding:9px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;width:100%;margin-top:11px;}
+.lbox{background:var(--modal);border-radius:13px;padding:24px 20px;max-width:310px;width:92%;text-align:center;}
+.lbox h2{font-size:17px;color:#16a34a;margin-bottom:4px;}
+.lbox p{font-size:12px;color:var(--sub);margin-bottom:15px;}
+.linp{width:100%;padding:9px 11px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:13px;margin-bottom:9px;outline:none;}
+.linp:focus{border-color:#16a34a;}
+.lbtn{width:100%;background:#16a34a;color:#fff;border:none;padding:10px;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;}
+.lerr{color:#ef4444;font-size:12px;margin-top:6px;display:none;}
+/* CHAT */
+.chat-msg{display:flex;flex-direction:column;}
+.chat-msg.user{align-items:flex-end;}.chat-msg.bot{align-items:flex-start;}
+.chat-bubble{max-width:88%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.6;}
+.bot-bubble{background:var(--filter);border:1px solid var(--border);color:var(--text);}
+.user-bubble{background:#16a34a;color:#fff;}
+.chat-bubble em{color:#16a34a;cursor:pointer;font-style:normal;text-decoration:underline;}
+.typing{display:flex;gap:4px;align-items:center;padding:10px 13px;}
+.typing span{width:7px;height:7px;background:var(--sub);border-radius:50%;animation:bounce .9s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-7px);}}
+/* ELIGIBILITY BAR */
+.eli-bar{background:var(--border);border-radius:10px;height:6px;overflow:hidden;margin-top:3px;}
+.eli-fill{height:100%;border-radius:10px;transition:width .5s;}
+footer{background:var(--nav);color:rgba(255,255,255,.82);text-align:center;padding:13px;font-size:12px;}
+.stab{padding:6px 11px;border-radius:16px;border:1.5px solid var(--border);background:var(--card);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;}
+.stab:hover{background:#16a34a;color:#fff;border-color:#16a34a;}
+@media(max-width:540px){.aform{grid-template-columns:1fr;}.aform .full{grid-column:1;}.filter-row{grid-template-columns:1fr 1fr;}.hero h1{font-size:16px;}.main-tab{padding:8px 10px;font-size:11px;}}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <h1>Yojana Mitra</h1>
-    <p>Government Scholarship & Exam Information Portal</p>
-  </header>
+<nav>
+  <div class="logo">🏛 Govt Yojana Mitra</div>
+  <div class="nav-right">
+    <button class="nb lang-btn" id="langBtn" onclick="toggleLang()">🇬🇧 EN</button>
+    <button class="nb" onclick="toggleDark()" id="darkBtn">🌙</button>
+    <button class="nb" onclick="showPage('bmark')">⭐<span id="bmc">0</span></button>
+    <button class="nb" onclick="toggleNotif()" id="nBtn" style="position:relative;">🔔<span id="nc">0</span><span class="ndot" id="ndot"></span></button>
+    <button class="nb yellow" id="adminBtn" onclick="showLogin()">🔐 Admin</button>
+  </div>
+</nav>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Scholarships</a>
-    <a href="#">Exams</a>
-    <a href="#">Notes</a>
-    <a href="#">Contact</a>
-  </nav>
+<div class="npanel" id="npanel">
+  <div class="nh" id="nh_title">🔔 Notifications <span class="mr-btn" onclick="markRead()">सर्व वाचले</span></div>
+  <div id="nlist"></div>
+</div>
 
-  <section class="hero">
-    <h2>Welcome to Yojana Mitra</h2>
-    <p>
-      Find latest scholarships, competitive exam updates,
-      free study materials, notes, PYQs and government schemes
-      in one place.
-    </p>
+<div class="hero">
+  <h1 id="hero_h">🎓 सर्व Scholarships एकाच ठिकाणी</h1>
+  <p id="hero_p">केंद्र सरकार · राज्य सरकार · खाजगी संस्था — सोप्या मराठीत</p>
+  <div class="sw">
+    <input type="text" id="sInput" placeholder="Scholarship शोधा..." oninput="doSearch()"/>
+    <button onclick="doSearch()" id="searchBtn">🔍 शोधा</button>
+  </div>
+</div>
 
-    <a href="#" class="btn">Explore Now</a>
-  </section>
+<div class="ticker"><span class="ticker-inner" id="tickerTxt">🔴 NSP Portal 2025 अर्ज सुरू &nbsp;|&nbsp; MahaDBT Scholarship नोंदणी चालू &nbsp;|&nbsp; NMMS परीक्षा नोव्हेंबर 2025 &nbsp;|&nbsp; Tata Pankh Scholarship नवीन &nbsp;|&nbsp; HDFC Parivartan Scholarship खुली</span></div>
 
-  <h2 class="section-title">Our Services</h2>
+<div class="main-tabs">
+  <div class="main-tab active" id="tab_c" onclick="showPage('central')">🏛 केंद्र</div>
+  <div class="main-tab" id="tab_s" onclick="showPage('state')">🗺️ राज्य</div>
+  <div class="main-tab" id="tab_p" onclick="showPage('private')">🏢 खाजगी</div>
+  <div class="main-tab" id="tab_ai" onclick="showPage('chatbot')">🤖 AI Chat</div>
+  <div class="main-tab" id="tab_e" onclick="showPage('eligibility')">✅ Eligibility</div>
+  <div class="main-tab" id="tab_b" onclick="showPage('bmark')">⭐ Saved</div>
+</div>
 
-  <section class="cards">
+<div class="container">
 
-    <div class="card">
-      <h3>Scholarships</h3>
-      <p>
-        Get latest government and private scholarship updates
-        with eligibility and apply links.
-      </p>
+<!-- CENTRAL PAGE -->
+<div class="page active" id="pg-central">
+  <div class="apanel" id="adminPanel">
+    <h3>⚙️ नवीन Scholarship Add करा</h3>
+    <div class="aform">
+      <div class="fg2"><label>नाव *</label><input id="f_t" placeholder="Scholarship नाव"/></div>
+      <div class="fg2"><label>Section</label>
+        <select id="f_sec"><option value="central">केंद्र सरकार</option><option value="state">राज्य सरकार</option><option value="private">खाजगी</option></select></div>
+      <div class="fg2"><label>शिक्षण स्तर</label>
+        <select id="f_cat"><option value="all">सर्व</option><option value="10vi">10वी</option><option value="12vi">12वी</option><option value="iti">ITI/Diploma</option><option value="grad">Graduation</option><option value="pg">PG/PhD</option><option value="pro">Professional</option></select></div>
+      <div class="fg2"><label>प्रवर्ग</label>
+        <select id="f_caste"><option value="all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS</option><option value="minority">Minority</option><option value="sebc">SEBC</option></select></div>
+      <div class="fg2"><label>लिंग</label>
+        <select id="f_gen"><option value="all">सर्व</option><option value="female">मुली</option><option value="male">मुले</option></select></div>
+      <div class="fg2"><label>रक्कम</label><input id="f_r" placeholder="₹25,000 पर्यंत"/></div>
+      <div class="fg2 full"><label>माहिती *</label><textarea id="f_d" placeholder="Scholarship माहिती..."></textarea></div>
+      <div class="fg2"><label>लाभार्थी</label><input id="f_l" placeholder="SC/OBC विद्यार्थी"/></div>
+      <div class="fg2"><label>अर्ज सुरू</label><input id="f_s" placeholder="जुलै 2025"/></div>
+      <div class="fg2"><label>शेवटची तारीख</label><input id="f_e" placeholder="डिसेंबर 2025"/></div>
+      <div class="fg2"><label>Official Link</label><input id="f_lnk" placeholder="https://..."/></div>
+      <div class="fg2"><label>कागदपत्रे</label><input id="f_doc" placeholder="आधार, मार्कशीट"/></div>
     </div>
-
-    <div class="card">
-      <h3>Study Material</h3>
-      <p>
-        Download free PDFs, handwritten notes and exam preparation material.
-      </p>
+    <button class="abtn" onclick="addSch()">➕ Add करा</button>
+    <div class="sucmsg" id="sucmsg">✅ यशस्वीरीत्या add केली!</div>
+  </div>
+  <div class="ad-box">📢 Google AdSense येथे दिसेल</div>
+  <div class="sec-title">🏛 केंद्र सरकार Scholarships <span id="c-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
+  <p class="sec-sub">NSP Portal, UGC, AICTE, DST द्वारे — सर्व भारतीय विद्यार्थ्यांसाठी</p>
+  <div class="filter-box">
+    <div class="filter-row">
+      <div class="fg"><label>शिक्षण स्तर</label><select id="cf_edu" onchange="renderSection('central')"><option value="all">सर्व</option><option value="10vi">10वी</option><option value="12vi">12वी</option><option value="iti">ITI</option><option value="grad">Graduation</option><option value="pg">PG/PhD</option><option value="pro">Professional</option></select></div>
+      <div class="fg"><label>प्रवर्ग</label><select id="cf_caste" onchange="renderSection('central')"><option value="all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS</option><option value="minority">Minority</option></select></div>
+      <div class="fg"><label>लिंग</label><select id="cf_gen" onchange="renderSection('central')"><option value="all">सर्व</option><option value="female">मुली</option><option value="male">मुले</option></select></div>
+      <div class="fg"><label>रक्कम</label><select id="cf_amt" onchange="renderSection('central')"><option value="all">सर्व</option><option value="10k">₹10,000+</option><option value="25k">₹25,000+</option><option value="50k">₹50,000+</option></select></div>
     </div>
+    <div class="fbtns"><button class="fb fb-a" onclick="renderSection('central')">✅ Filter</button><button class="fb fb-c" onclick="clearF('c');renderSection('central')">🔄 Clear</button></div>
+    <div class="rinfo" id="c-rinfo"></div>
+  </div>
+  <div class="grid" id="c-grid"></div>
+  <div class="no-res" id="c-nores">😔 कोणतीही Scholarship सापडली नाही.</div>
+</div>
 
-    <div class="card">
-      <h3>Previous Papers</h3>
-      <p>
-        Access previous year question papers for SSC, Railway, MPSC and more.
-      </p>
+<!-- STATE PAGE -->
+<div class="page" id="pg-state">
+  <div class="ad-box">📢 Google AdSense येथे दिसेल</div>
+  <div class="sec-title">🗺️ राज्य सरकार Scholarships <span id="s-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
+  <p class="sec-sub">Maharashtra, UP, Karnataka, Rajasthan सहित सर्व राज्यांच्या Scholarships</p>
+  <div class="filter-box">
+    <div class="filter-row">
+      <div class="fg"><label>राज्य</label><select id="sf_state" onchange="renderSection('state')"><option value="all">सर्व राज्ये</option><option value="mh">Maharashtra</option><option value="up">Uttar Pradesh</option><option value="ka">Karnataka</option><option value="rj">Rajasthan</option><option value="mp">Madhya Pradesh</option><option value="tn">Tamil Nadu</option><option value="wb">West Bengal</option><option value="gj">Gujarat</option></select></div>
+      <div class="fg"><label>प्रवर्ग</label><select id="sf_caste" onchange="renderSection('state')"><option value="all">सर्व</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC</option><option value="ews">EWS</option><option value="sebc">SEBC</option></select></div>
+      <div class="fg"><label>शिक्षण स्तर</label><select id="sf_edu" onchange="renderSection('state')"><option value="all">सर्व</option><option value="10vi">10वी</option><option value="12vi">12वी</option><option value="iti">ITI</option><option value="grad">Graduation</option><option value="pg">PG</option><option value="pro">Professional</option></select></div>
+      <div class="fg"><label>लिंग</label><select id="sf_gen" onchange="renderSection('state')"><option value="all">सर्व</option><option value="female">मुली</option><option value="male">मुले</option></select></div>
     </div>
+    <div class="fbtns"><button class="fb fb-a" onclick="renderSection('state')">✅ Filter</button><button class="fb fb-c" onclick="clearF('s');renderSection('state')">🔄 Clear</button></div>
+    <div class="rinfo" id="s-rinfo"></div>
+  </div>
+  <div class="grid" id="s-grid"></div>
+  <div class="no-res" id="s-nores">😔 कोणतीही Scholarship सापडली नाही.</div>
+</div>
 
-    <div class="card">
-      <h3>Latest Updates</h3>
-      <p>
-        Stay updated with exam notifications, admit cards and results.
-      </p>
+<!-- PRIVATE PAGE -->
+<div class="page" id="pg-private">
+  <div class="ad-box">📢 Google AdSense येथे दिसेल</div>
+  <div class="sec-title">🏢 खाजगी संस्था Scholarships <span id="p-cnt" style="font-size:12px;font-weight:400;color:var(--sub);"></span></div>
+  <p class="sec-sub">Tata, Reliance, HDFC, Mahindra सारख्या मोठ्या कंपन्यांकडून</p>
+  <div class="filter-box">
+    <div class="filter-row">
+      <div class="fg"><label>संस्था</label><select id="pf_org" onchange="renderSection('private')"><option value="all">सर्व</option><option value="tata">Tata Group</option><option value="reliance">Reliance</option><option value="hdfc">HDFC Bank</option><option value="mahindra">Mahindra</option><option value="birla">Aditya Birla</option><option value="other">इतर</option></select></div>
+      <div class="fg"><label>शिक्षण स्तर</label><select id="pf_edu" onchange="renderSection('private')"><option value="all">सर्व</option><option value="10vi">10वी</option><option value="12vi">12वी</option><option value="iti">ITI</option><option value="grad">Graduation</option><option value="pg">PG</option><option value="pro">Professional</option></select></div>
+      <div class="fg"><label>लिंग</label><select id="pf_gen" onchange="renderSection('private')"><option value="all">सर्व</option><option value="female">मुली</option><option value="male">मुले</option></select></div>
+      <div class="fg"><label>रक्कम</label><select id="pf_amt" onchange="renderSection('private')"><option value="all">सर्व</option><option value="10k">₹10,000+</option><option value="25k">₹25,000+</option><option value="50k">₹50,000+</option></select></div>
     </div>
+    <div class="fbtns"><button class="fb fb-a" onclick="renderSection('private')">✅ Filter</button><button class="fb fb-c" onclick="clearF('p');renderSection('private')">🔄 Clear</button></div>
+    <div class="rinfo" id="p-rinfo"></div>
+  </div>
+  <div class="grid" id="p-grid"></div>
+  <div class="no-res" id="p-nores">😔 कोणतीही Scholarship सापडली नाही.</div>
+</div>
 
-  </section>
+<!-- AI CHATBOT PAGE -->
+<div class="page" id="pg-chatbot">
+  <div style="max-width:620px;margin:0 auto;">
+    <div class="sec-title">🤖 AI Scholarship Assistant</div>
+    <p class="sec-sub">Scholarship बद्दल कोणताही प्रश्न विचारा — AI उत्तर देईल!</p>
+    <div id="chatWindow" style="background:var(--card);border:1px solid var(--border);border-radius:12px;height:370px;overflow-y:auto;padding:14px;margin-bottom:10px;display:flex;flex-direction:column;gap:10px;">
+      <div class="chat-msg bot"><div class="chat-bubble bot-bubble">
+        👋 नमस्कार! मी Yojana Mitra AI Assistant आहे.<br><br>
+        उदाहरण प्रश्न विचारा:<br>
+        • <em onclick="askQuick(this)">SC विद्यार्थ्यांसाठी कोणत्या scholarships आहेत?</em><br>
+        • <em onclick="askQuick(this)">मुलींसाठी सर्वात जास्त रक्कम कोणती scholarship देते?</em><br>
+        • <em onclick="askQuick(this)">NSP scholarship कशी apply करायची?</em><br>
+        • <em onclick="askQuick(this)">Which scholarships are available for OBC students?</em>
+      </div></div>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+      <button class="stab" onclick="askQuick(this)">SC scholarship</button>
+      <button class="stab" onclick="askQuick(this)">मुलींसाठी scholarship</button>
+      <button class="stab" onclick="askQuick(this)">OBC scholarship</button>
+      <button class="stab" onclick="askQuick(this)">PhD fellowship</button>
+      <button class="stab" onclick="askQuick(this)">Tata scholarship</button>
+      <button class="stab" onclick="askQuick(this)">MahaDBT काय आहे?</button>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <input type="text" id="chatInput" placeholder="तुमचा प्रश्न लिहा... / Type your question..."
+        style="flex:1;padding:11px 13px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:8px;font-size:13px;outline:none;"
+        onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button onclick="sendChat()" style="background:#16a34a;color:#fff;border:none;padding:11px 18px;border-radius:8px;font-size:15px;cursor:pointer;">➤</button>
+      <button onclick="clearChat()" style="background:var(--border);color:var(--text);border:none;padding:11px 13px;border-radius:8px;font-size:13px;cursor:pointer;">🗑</button>
+    </div>
+    <p style="font-size:11px;color:var(--sub);margin-top:7px;text-align:center;">AI उत्तरे website वरील scholarship माहितीवर आधारित आहेत.</p>
+  </div>
+</div>
 
-  <footer>
-    <p>© 2026 Yojana Mitra | Designed by Shriram</p>
-  </footer>
+<!-- ELIGIBILITY PAGE -->
+<div class="page" id="pg-eligibility">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="sec-title">✅ Eligibility Checker</div>
+    <p class="sec-sub">तुमची माहिती भरा — तुमच्यासाठी योग्य Scholarships आपोआप दिसतील!</p>
+    <div class="filter-box" style="margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>शिक्षण स्तर</label>
+          <select id="el_edu_v"><option value="">-- निवडा --</option><option value="10vi">10वी</option><option value="12vi">12वी</option><option value="iti">ITI/Polytechnic</option><option value="grad">Graduation</option><option value="pg">PG/PhD</option><option value="pro">Professional</option></select></div>
+        <div class="fg"><label>जात / प्रवर्ग</label>
+          <select id="el_caste_v"><option value="">-- निवडा --</option><option value="sc">SC</option><option value="st">ST</option><option value="obc">OBC/NT/SBC</option><option value="ews">EWS/General</option><option value="minority">Minority</option><option value="sebc">SEBC/Maratha</option></select></div>
+        <div class="fg"><label>लिंग</label>
+          <select id="el_gender_v"><option value="">-- निवडा --</option><option value="female">मुलगी</option><option value="male">मुलगा</option></select></div>
+        <div class="fg"><label>वार्षिक उत्पन्न</label>
+          <select id="el_income_v"><option value="">-- निवडा --</option><option value="1.5">₹1.5 लाखांपेक्षा कमी</option><option value="2">₹2 लाखांपेक्षा कमी</option><option value="2.5">₹2.5 लाखांपेक्षा कमी</option><option value="5">₹5 लाखांपेक्षा कमी</option><option value="8">₹8 लाखांपेक्षा कमी</option><option value="15">₹15 लाखांपेक्षा कमी</option></select></div>
+        <div class="fg"><label>राज्य</label>
+          <select id="el_state_v"><option value="">-- निवडा --</option><option value="mh">Maharashtra</option><option value="up">Uttar Pradesh</option><option value="ka">Karnataka</option><option value="rj">Rajasthan</option><option value="mp">Madhya Pradesh</option><option value="tn">Tamil Nadu</option><option value="wb">West Bengal</option><option value="gj">Gujarat</option><option value="other">इतर</option></select></div>
+        <div class="fg"><label>% गुण (Marks)</label>
+          <input type="number" id="el_marks_v" placeholder="उदा. 75" min="0" max="100"
+            style="padding:7px 9px;border:1px solid var(--inpb);background:var(--inp);color:var(--text);border-radius:7px;font-size:13px;outline:none;"/></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <button class="fb fb-a" style="padding:10px 20px;font-size:13px;" onclick="checkEligibility()">🔍 Scholarships शोधा</button>
+        <button class="fb fb-c" onclick="clearEligibility()">🔄 Clear</button>
+      </div>
+    </div>
+    <div id="eli_result" style="display:none;">
+      <div id="eli_summary" style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:13px;margin-bottom:14px;font-size:13px;color:#166534;"></div>
+      <div class="grid" id="eli_grid"></div>
+    </div>
+    <div id="eli_empty" style="display:none;text-align:center;padding:28px;color:var(--sub);font-size:13px;">😔 तुमच्या माहितीनुसार कोणतीही Scholarship सापडली नाही.</div>
+    <div id="eli_start" style="text-align:center;padding:30px;color:var(--sub);font-size:13px;">☝️ वरील form भरा आणि तुमच्यासाठी योग्य Scholarships पाहा!</div>
+  </div>
+</div>
 
+<!-- BOOKMARK PAGE -->
+<div class="page" id="pg-bmark">
+  <button class="back-btn" onclick="showPage('central')">← मागे जा</button>
+  <div class="sec-title">⭐ Saved Scholarships</div>
+  <div class="grid" id="bm-grid"></div>
+  <div class="no-res" id="bm-nores" style="display:block;">⭐ अजून कोणतीही Scholarship save केली नाही.</div>
+</div>
+
+</div><!-- container -->
+
+<footer>© 2025 Government Yojana Mitra | महाराष्ट्र, भारत | केवळ माहितीसाठी — अधिकृत माहितीसाठी सरकारी वेबसाईट पाहा.</footer>
+
+<!-- INFO MODAL -->
+<div class="overlay" id="infoOv" onclick="if(event.target.id==='infoOv')this.classList.remove('open')">
+  <div class="modal"><button class="mclose" onclick="document.getElementById('infoOv').classList.remove('open')">✕</button>
+    <h2 id="mT"></h2><div id="mB"></div></div>
+</div>
+<!-- LOGIN MODAL -->
+<div class="overlay" id="loginOv" onclick="if(event.target.id==='loginOv')this.classList.remove('open')">
+  <div class="lbox"><h2>🔐 Admin Login</h2><p>Scholarship add/delete करण्यासाठी</p>
+    <input class="linp" type="text" id="lu" placeholder="Username"/>
+    <input class="linp" type="password" id="lp" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="lbtn" onclick="doLogin()">Login करा</button>
+    <div class="lerr" id="lerr">❌ चुकीचा Username किंवा Password!</div>
+  </div>
+</div>
+
+<script>
+const AU='admin', AP='yojana123';
+let isAdmin=false, bookmarks=new Set(), curMain='central', lang='mr';
+
+// ── DATA ──────────────────────────────────────────────────────
+const centralData=[
+  {cat:'10vi',caste:'all',gender:'all',title:'NMMS Scholarship',desc_mr:'राष्ट्रीय साधन व गुणवत्ता शिष्यवृत्ती — 8वी उत्तीर्ण आर्थिकदृष्ट्या दुर्बल गुणवंत विद्यार्थ्यांना 9वी ते 12वी साठी दरवर्षी शिष्यवृत्ती. राज्यस्तरीय परीक्षा द्यावी लागते.',desc_en:'National Means-cum-Merit Scholarship — Annual scholarship for economically weak meritorious students from Class 9 to 12.',labh_mr:'SC/ST/OBC/General, उत्पन्न ₹1.5 लाखांपेक्षा कमी',labh_en:'SC/ST/OBC/General, Income below ₹1.5 lakh',rakam:'₹12,000/year',link:'https://scholarships.gov.in',docs_mr:'8वी मार्कशीट, आधार, उत्पन्न दाखला',docs_en:'Class 8 Marksheet, Aadhaar, Income Certificate',start:'Jul 2025',date:'Oct 2025',amt:12000,isNew:false},
+  {cat:'10vi',caste:'sc',gender:'all',title:'Pre Matric Scholarship (SC)',desc_mr:'SC प्रवर्गातील 9वी-10वी विद्यार्थ्यांना शिक्षण सुरू ठेवण्यासाठी दरमहा शिष्यवृत्ती.',desc_en:'Monthly scholarship for SC students in Class 9-10 to continue education.',labh_mr:'SC विद्यार्थी, उत्पन्न ₹2 लाखांपेक्षा कमी',labh_en:'SC students, Income below ₹2 lakh',rakam:'₹3,500-₹7,000/year',link:'https://scholarships.gov.in',docs_mr:'जात प्रमाणपत्र, आधार, मार्कशीट',docs_en:'Caste Certificate, Aadhaar, Marksheet',start:'Aug 2025',date:'Nov 2025',amt:7000,isNew:false},
+  {cat:'10vi',caste:'minority',gender:'all',title:'Pre Matric Minority Scholarship',desc_mr:'Minority समाजातील 1ली ते 10वी विद्यार्थ्यांसाठी शिष्यवृत्ती. NSP पोर्टलवर अर्ज.',desc_en:'Scholarship for Minority students from Class 1 to 10. Apply on NSP portal.',labh_mr:'Muslim/Christian/Sikh/Buddhist/Jain/Parsi',labh_en:'Muslim/Christian/Sikh/Buddhist/Jain/Parsi',rakam:'₹1,000-₹10,000/year',link:'https://scholarships.gov.in',docs_mr:'धर्माचा पुरावा, आधार, मार्कशीट',docs_en:'Religion proof, Aadhaar, Marksheet',start:'Jul 2025',date:'Oct 2025',amt:10000,isNew:false},
+  {cat:'10vi',caste:'all',gender:'all',title:'Inspire Scholarship (DST)',desc_mr:'10वी मध्ये Top 1% गुण मिळवलेल्या विद्यार्थ्यांना विज्ञान क्षेत्रासाठी दरमहा शिष्यवृत्ती.',desc_en:'Monthly scholarship for students with Top 1% marks in Class 10 for Science field.',labh_mr:'10वी Top 1% विद्यार्थी',labh_en:'Top 1% students in Class 10',rakam:'₹5,000/month',link:'https://online-inspire.gov.in',docs_mr:'10वी मार्कशीट, आधार, बँक खाते',docs_en:'Class 10 Marksheet, Aadhaar, Bank Account',start:'Jun 2025',date:'Jul 2025',amt:60000,isNew:false},
+  {cat:'12vi',caste:'sc',gender:'all',title:'Post Matric Scholarship (SC)',desc_mr:'SC विद्यार्थ्यांना 12वी नंतर शिक्षण शुल्क, परीक्षा शुल्क व निर्वाह भत्ता. दरवर्षी Renewal.',desc_en:'Tuition, exam fees & maintenance for SC students after Class 12. Annual renewal needed.',labh_mr:'SC प्रवर्ग, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'SC category, Income below ₹2.5 lakh',rakam:'₹15,000-₹40,000/year',link:'https://scholarships.gov.in',docs_mr:'जात प्रमाणपत्र, 12वी मार्कशीट, आधार',docs_en:'Caste Certificate, Class 12 Marksheet, Aadhaar',start:'Jul 2025',date:'Dec 2025',amt:40000,isNew:false},
+  {cat:'12vi',caste:'st',gender:'all',title:'Post Matric Scholarship (ST)',desc_mr:'ST विद्यार्थ्यांना 12वी नंतर उच्च शिक्षणासाठी शिष्यवृत्ती. Tribal Ministry मार्फत.',desc_en:'Scholarship for ST students after Class 12 for higher education via Tribal Ministry.',labh_mr:'ST प्रवर्ग, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'ST category, Income below ₹2.5 lakh',rakam:'₹10,000-₹35,000/year',link:'https://scholarships.gov.in',docs_mr:'जात प्रमाणपत्र, 12वी मार्कशीट, आधार',docs_en:'Caste Certificate, Class 12 Marksheet, Aadhaar',start:'Jul 2025',date:'Dec 2025',amt:35000,isNew:false},
+  {cat:'12vi',caste:'minority',gender:'all',title:'Post Matric Minority Scholarship',desc_mr:'Minority विद्यार्थ्यांना 11वी ते Graduation शिक्षण शुल्क व निर्वाह भत्ता. NSP पोर्टल.',desc_en:'Tuition & maintenance for Minority students from Class 11 to Graduation. NSP portal.',labh_mr:'Muslim/Christian/Sikh/Buddhist/Jain/Parsi, उत्पन्न ₹2 लाखांपेक्षा कमी',labh_en:'Muslim/Christian/Sikh/Buddhist/Jain/Parsi, Income below ₹2 lakh',rakam:'₹10,000-₹25,000/year',link:'https://scholarships.gov.in',docs_mr:'धर्माचा पुरावा, आधार, मार्कशीट',docs_en:'Religion proof, Aadhaar, Marksheet',start:'Jul 2025',date:'Oct 2025',amt:25000,isNew:false},
+  {cat:'12vi',caste:'all',gender:'all',title:'Central Sector Scholarship',desc_mr:'12वी मध्ये Top 20% गुण असलेल्या Graduation विद्यार्थ्यांसाठी. 3 वर्षे मिळते.',desc_en:'For Graduation students with Top 20% marks in Class 12. Valid for 3 years.',labh_mr:'सर्व प्रवर्ग, उत्पन्न ₹8 लाखांपेक्षा कमी',labh_en:'All categories, Income below ₹8 lakh',rakam:'₹10,000/year (3 yrs)',link:'https://scholarships.gov.in',docs_mr:'12वी मार्कशीट, आधार, प्रवेश पत्र',docs_en:'Class 12 Marksheet, Aadhaar, Admission Letter',start:'Aug 2025',date:'Oct 2025',amt:10000,isNew:false},
+  {cat:'grad',caste:'all',gender:'all',title:'NSP Post Matric Scholarship',desc_mr:'National Scholarship Portal — SC/ST/OBC/Minority Graduation विद्यार्थ्यांसाठी सर्वात मोठी केंद्र योजना.',desc_en:'NSP — Largest central scheme for SC/ST/OBC/Minority Graduation students.',labh_mr:'SC/ST/OBC/Minority, उत्पन्न मर्यादा प्रवर्गानुसार',labh_en:'SC/ST/OBC/Minority, Income limit as per category',rakam:'₹10,000-₹50,000/year',link:'https://scholarships.gov.in',docs_mr:'आधार, जात प्रमाणपत्र, मार्कशीट',docs_en:'Aadhaar, Caste Certificate, Marksheet',start:'Jul 2025',date:'Nov 2025',amt:50000,isNew:false},
+  {cat:'grad',caste:'all',gender:'all',title:'Ishan Uday Scholarship (NE India)',desc_mr:'UGC — ईशान्य भारतातील 8 राज्यांमधील Graduation विद्यार्थ्यांसाठी विशेष शिष्यवृत्ती.',desc_en:'UGC — Special scholarship for Graduation students from 8 NE India states.',labh_mr:'NE India (Assam, Meghalaya, Manipur, etc.)',labh_en:'NE India students (Assam, Meghalaya, Manipur, etc.)',rakam:'₹54,000-₹78,000/year',link:'https://scholarships.gov.in',docs_mr:'अधिवास दाखला, 12वी मार्कशीट, आधार',docs_en:'Domicile Certificate, Class 12 Marksheet, Aadhaar',start:'Jul 2025',date:'Oct 2025',amt:78000,isNew:false},
+  {cat:'pg',caste:'sc',gender:'all',title:'PG Scholarship SC/ST (UGC)',desc_mr:'UGC — SC/ST PG (M.A./M.Sc./M.Com.) विद्यार्थ्यांना दरमहा शिष्यवृत्ती. 2 वर्षे.',desc_en:'UGC — Monthly scholarship for SC/ST PG students. Valid for 2 years.',labh_mr:'SC/ST PG विद्यार्थी',labh_en:'SC/ST PG students',rakam:'₹3,100-₹3,500/month',link:'https://scholarships.gov.in',docs_mr:'जात प्रमाणपत्र, Graduation मार्कशीट, आधार',docs_en:'Caste Certificate, Graduation Marksheet, Aadhaar',start:'Aug 2025',date:'Nov 2025',amt:42000,isNew:false},
+  {cat:'pg',caste:'sc',gender:'all',title:'Rajiv Gandhi Fellowship (SC/ST PhD)',desc_mr:'UGC — SC/ST PhD विद्यार्थ्यांसाठी 5 वर्षांची Fellowship. HRA व Contingency Grant सुद्धा.',desc_en:'UGC — 5-year PhD Fellowship for SC/ST students. Includes HRA & Contingency Grant.',labh_mr:'SC/ST PhD विद्यार्थी',labh_en:'SC/ST PhD students',rakam:'JRF: ₹25,000 | SRF: ₹28,000/month+HRA',link:'https://ugc.ac.in',docs_mr:'जात प्रमाणपत्र, PG मार्कशीट, PhD प्रवेश पत्र',docs_en:'Caste Certificate, PG Marksheet, PhD Admission Letter',start:'Jul 2025',date:'Aug 2025',amt:336000,isNew:false},
+  {cat:'pg',caste:'minority',gender:'all',title:'Maulana Azad National Fellowship',desc_mr:'UGC — Minority PhD/M.Phil विद्यार्थ्यांना 5 वर्षांची Fellowship. NET उत्तीर्ण आवश्यक.',desc_en:'UGC — 5-year fellowship for Minority PhD/M.Phil students. NET required.',labh_mr:'Muslim/Christian/Sikh/Buddhist/Jain PhD विद्यार्थी',labh_en:'Muslim/Christian/Sikh/Buddhist/Jain PhD students',rakam:'JRF: ₹25,000 | SRF: ₹28,000/month',link:'https://maef.nic.in',docs_mr:'NET प्रमाणपत्र, PG मार्कशीट, धर्माचा पुरावा',docs_en:'NET Certificate, PG Marksheet, Religion proof',start:'Jun 2025',date:'Jul 2025',amt:336000,isNew:false},
+  {cat:'pro',caste:'all',gender:'female',title:'AICTE Pragati Scholarship (Girls)',desc_mr:'AICTE — Technical शिक्षण घेणाऱ्या मुलींसाठी. BE/B.Tech/Diploma. एका कुटुंबातून 2 मुली.',desc_en:'AICTE — For girls in Technical courses. BE/B.Tech/Diploma. Max 2 girls per family.',labh_mr:'AICTE मान्यताप्राप्त Technical अभ्यासक्रमातील मुली',labh_en:'Girls in AICTE approved Technical courses',rakam:'₹50,000/year',link:'https://www.aicte-india.org',docs_mr:'आधार, मार्कशीट, प्रवेश पत्र, बँक खाते',docs_en:'Aadhaar, Marksheet, Admission Letter, Bank Account',start:'Aug 2025',date:'Nov 2025',amt:50000,isNew:true},
+  {cat:'pro',caste:'all',gender:'all',title:'PM Scholarship (CAPF/RPF)',desc_mr:'CAPF/RPF/Coast Guard कर्मचाऱ्यांच्या मुलांना Professional शिक्षणासाठी दरमहा शिष्यवृत्ती.',desc_en:'Monthly scholarship for children of CAPF/RPF/Coast Guard personnel for Professional courses.',labh_mr:'CAPF/RPF/Coast Guard कर्मचाऱ्यांची मुले',labh_en:'Children of CAPF/RPF/Coast Guard personnel',rakam:'Boys:₹2,500 | Girls:₹3,000/month',link:'https://ksb.gov.in',docs_mr:'सेवा प्रमाणपत्र, आधार, प्रवेश पत्र',docs_en:'Service Certificate, Aadhaar, Admission Letter',start:'Jun 2025',date:'Oct 2025',amt:36000,isNew:false},
+];
+
+const stateData=[
+  {cat:'12vi',caste:'sc',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'Post Matric SC (MH)',desc_mr:'महाराष्ट्र — SC विद्यार्थ्यांना 12वी नंतर शिक्षण शुल्क + निर्वाह भत्ता. MahaDBT पोर्टल.',desc_en:'Maharashtra — Tuition + maintenance for SC students after Class 12. MahaDBT portal.',labh_mr:'SC प्रवर्ग, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'SC category, Income below ₹2.5 lakh',rakam:'₹15,000-₹40,000/year',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'जात प्रमाणपत्र, 12वी मार्कशीट, आधार',docs_en:'Caste Certificate, Class 12 Marksheet, Aadhaar',start:'Jul 2025',date:'Dec 2025',amt:40000,isNew:false},
+  {cat:'12vi',caste:'ews',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'EBC Scholarship (MH)',desc_mr:'महाराष्ट्र — EWS/खुल्या प्रवर्गातील आर्थिक दुर्बल विद्यार्थ्यांना 12वी नंतर शिष्यवृत्ती.',desc_en:'Maharashtra — Scholarship for EWS/Open category economically weak students after Class 12.',labh_mr:'EWS/खुला प्रवर्ग, उत्पन्न ₹8 लाखांपेक्षा कमी',labh_en:'EWS/Open category, Income below ₹8 lakh',rakam:'₹20,000/year',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'उत्पन्न दाखला, आधार, 12वी मार्कशीट',docs_en:'Income Certificate, Aadhaar, Class 12 Marksheet',start:'Aug 2025',date:'Jan 2026',amt:20000,isNew:true},
+  {cat:'12vi',caste:'obc',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'Rajarshi Shahu Maharaj Scholarship (MH)',desc_mr:'महाराष्ट्र — OBC/NT/SBC विद्यार्थ्यांना 12वी नंतर. नॉन-क्रिमीलेअर आवश्यक.',desc_en:'Maharashtra — For OBC/NT/SBC students after Class 12. Non-creamy layer required.',labh_mr:'OBC/NT/SBC, नॉन-क्रिमीलेअर',labh_en:'OBC/NT/SBC, Non-creamy layer',rakam:'₹25,000/year',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'जात + नॉन-क्रिमीलेअर प्रमाणपत्र, आधार',docs_en:'Caste + Non-creamy layer certificate, Aadhaar',start:'Aug 2025',date:'Nov 2025',amt:25000,isNew:false},
+  {cat:'grad',caste:'sc',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'Swadhar Scholarship (MH)',desc_mr:'महाराष्ट्र — SC/DT/NT विद्यार्थ्यांना घरापासून दूर Graduation साठी. निवास+भोजन+शिक्षण.',desc_en:'Maharashtra — For SC/DT/NT students staying away for Graduation. Covers stay+food+tuition.',labh_mr:'SC/DT/NT, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'SC/DT/NT, Income below ₹2.5 lakh',rakam:'₹51,000/year',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'जात प्रमाणपत्र, भाडे पावती, आधार',docs_en:'Caste Certificate, Rent Receipt, Aadhaar',start:'Jul 2025',date:'Dec 2025',amt:51000,isNew:false},
+  {cat:'grad',caste:'sebc',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'Annasaheb Patil SEBC Scholarship (MH)',desc_mr:'महाराष्ट्र — SEBC/Maratha Graduation विद्यार्थ्यांसाठी शिक्षण शुल्क + मासिक भत्ता.',desc_en:'Maharashtra — Tuition + monthly allowance for SEBC/Maratha Graduation students.',labh_mr:'SEBC/Maratha, उत्पन्न ₹8 लाखांपेक्षा कमी',labh_en:'SEBC/Maratha, Income below ₹8 lakh',rakam:'Full Fees + ₹5,000/month',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'SEBC प्रमाणपत्र, मार्कशीट, आधार',docs_en:'SEBC Certificate, Marksheet, Aadhaar',start:'Aug 2025',date:'Dec 2025',amt:60000,isNew:true},
+  {cat:'pro',caste:'sc',gender:'all',state:'mh',stateLabel:'Maharashtra',title:'Medical/Engineering SC Scholarship (MH)',desc_mr:'महाराष्ट्र — SC विद्यार्थ्यांना MBBS/BE/BTech साठी संपूर्ण शिक्षण शुल्क माफ.',desc_en:'Maharashtra — Full tuition fee waiver for SC students in MBBS/BE/BTech.',labh_mr:'SC Medical/Engineering विद्यार्थी',labh_en:'SC Medical/Engineering students',rakam:'Full Fee Waiver',link:'https://mahadbt.maharashtra.gov.in',docs_mr:'जात प्रमाणपत्र, प्रवेश पत्र, फी रिसीट, आधार',docs_en:'Caste Certificate, Admission Letter, Fee Receipt, Aadhaar',start:'Jul 2025',date:'Oct 2025',amt:200000,isNew:false},
+  {cat:'12vi',caste:'sc',gender:'all',state:'up',stateLabel:'Uttar Pradesh',title:'UP Post Matric Scholarship',desc_mr:'उत्तर प्रदेश — SC/ST/OBC विद्यार्थ्यांना 12वी नंतर उच्च शिक्षणासाठी.',desc_en:'UP — For SC/ST/OBC students after Class 12 for higher education.',labh_mr:'SC/ST/OBC, UP रहिवासी',labh_en:'SC/ST/OBC, UP resident',rakam:'₹5,000-₹30,000/year',link:'https://scholarship.up.gov.in',docs_mr:'जात प्रमाणपत्र, आधार, मार्कशीट',docs_en:'Caste Certificate, Aadhaar, Marksheet',start:'Jul 2025',date:'Nov 2025',amt:30000,isNew:false},
+  {cat:'grad',caste:'sc',gender:'all',state:'ka',stateLabel:'Karnataka',title:'Vidyasiri Scholarship (KA)',desc_mr:'Karnataka — SC/ST/OBC विद्यार्थ्यांना Pre/Post-Matric शिष्यवृत्ती. KEA मार्फत.',desc_en:'Karnataka — Pre/Post-Matric scholarship for SC/ST/OBC students via KEA.',labh_mr:'SC/ST/OBC Karnataka विद्यार्थी',labh_en:'SC/ST/OBC Karnataka students',rakam:'₹5,000-₹15,000/year',link:'https://karepass.cgg.gov.in',docs_mr:'जात प्रमाणपत्र, अधिवास दाखला, आधार',docs_en:'Caste Certificate, Domicile, Aadhaar',start:'Jul 2025',date:'Oct 2025',amt:15000,isNew:false},
+  {cat:'12vi',caste:'all',gender:'female',state:'rj',stateLabel:'Rajasthan',title:'Mukhyamantri Ucch Shiksha Scholarship (RJ)',desc_mr:'Rajasthan — 12वी मध्ये 60%+ गुण असलेल्या मुलींना दरमहा ₹500.',desc_en:'Rajasthan — ₹500/month for girls with 60%+ marks in Class 12.',labh_mr:'Rajasthan मुली, उत्पन्न ₹2 लाखांपेक्षा कमी',labh_en:'Rajasthan girls, Income below ₹2 lakh',rakam:'₹500/month (5 years)',link:'https://hte.rajasthan.gov.in',docs_mr:'12वी मार्कशीट, आधार, उत्पन्न दाखला',docs_en:'Class 12 Marksheet, Aadhaar, Income Certificate',start:'Jul 2025',date:'Nov 2025',amt:6000,isNew:false},
+  {cat:'grad',caste:'all',gender:'all',state:'wb',stateLabel:'West Bengal',title:'WB Swami Vivekananda Scholarship',desc_mr:'West Bengal — Higher Secondary ते PG पर्यंत गुणवंत विद्यार्थ्यांसाठी Merit आधारित.',desc_en:'West Bengal — Merit-based scholarship from Higher Secondary to PG level.',labh_mr:'WB विद्यार्थी, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'WB students, Income below ₹2.5 lakh',rakam:'₹1,000-₹8,000/month',link:'https://svmcm.wbhed.gov.in',docs_mr:'आधार, मार्कशीट, उत्पन्न दाखला',docs_en:'Aadhaar, Marksheet, Income Certificate',start:'Sep 2025',date:'Dec 2025',amt:96000,isNew:false},
+];
+
+const privateData=[
+  {cat:'grad',org:'tata',orgLabel:'Tata Capital',gender:'all',title:'Tata Capital Pankh Scholarship',desc_mr:'Tata Capital — आर्थिकदृष्ट्या दुर्बल Graduation/Diploma विद्यार्थ्यांसाठी. Buddy4Study पोर्टल.',desc_en:'Tata Capital — For economically weak Graduation/Diploma students. Buddy4Study portal.',labh_mr:'उत्पन्न ₹4 लाखांपेक्षा कमी',labh_en:'Family income below ₹4 lakh',rakam:'₹12,000/year',link:'https://www.buddy4study.com',docs_mr:'आधार, उत्पन्न दाखला, मार्कशीट',docs_en:'Aadhaar, Income Certificate, Marksheet',start:'Jul 2025',date:'Oct 2025',amt:12000,isNew:true},
+  {cat:'grad',org:'reliance',orgLabel:'Reliance Foundation',gender:'all',title:'Reliance Foundation Scholarship',desc_mr:'Reliance Foundation — Graduation/PG गुणवंत विद्यार्थ्यांसाठी. Online परीक्षा + Interview.',desc_en:'Reliance Foundation — For meritorious Graduation/PG students. Online test + Interview.',labh_mr:'Graduation/PG विद्यार्थी, उत्पन्न ₹15 लाखांपेक्षा कमी',labh_en:'Graduation/PG students, Income below ₹15 lakh',rakam:'₹2,00,000/year',link:'https://scholarships.reliancefoundation.org',docs_mr:'आधार, मार्कशीट, Essay',docs_en:'Aadhaar, Marksheet, Essay',start:'Jan 2026',date:'Mar 2026',amt:200000,isNew:false},
+  {cat:'grad',org:'hdfc',orgLabel:'HDFC Bank',gender:'all',title:'HDFC Bank Parivartan Scholarship',desc_mr:'HDFC Bank — आर्थिकदृष्ट्या दुर्बल Graduation विद्यार्थ्यांना. Engineering, Medical, Law सर्वांना.',desc_en:'HDFC Bank — For economically weak Graduation students. Engineering, Medical, Law included.',labh_mr:'Graduation विद्यार्थी, उत्पन्न ₹5 लाखांपेक्षा कमी',labh_en:'Graduation students, Income below ₹5 lakh',rakam:'₹50,000/year',link:'https://www.buddy4study.com',docs_mr:'आधार, उत्पन्न दाखला, मार्कशीट',docs_en:'Aadhaar, Income Certificate, Marksheet',start:'Jul 2025',date:'Oct 2025',amt:50000,isNew:true},
+  {cat:'iti',org:'mahindra',orgLabel:'Mahindra Group',gender:'all',title:'Mahindra All India Talent Scholarship',desc_mr:'Mahindra — Diploma/ITI विद्यार्थ्यांना Skill Development साठी. Automobile, Mechanical शाखा.',desc_en:'Mahindra — For ITI/Diploma students in Skill Development. Automobile, Mechanical branches.',labh_mr:'ITI/Diploma विद्यार्थी, उत्पन्न ₹2.5 लाखांपेक्षा कमी',labh_en:'ITI/Diploma students, Income below ₹2.5 lakh',rakam:'₹18,000/year',link:'https://www.buddy4study.com',docs_mr:'आधार, ITI/Diploma प्रवेश पत्र',docs_en:'Aadhaar, ITI/Diploma Admission Letter',start:'Aug 2025',date:'Nov 2025',amt:18000,isNew:true},
+  {cat:'pro',org:'birla',orgLabel:'Aditya Birla Group',gender:'all',title:'Aditya Birla Scholarship',desc_mr:'Aditya Birla — IIT, IIM, BITS, NLU, XLRI विद्यार्थ्यांसाठी Merit आधारित. Interview.',desc_en:'Aditya Birla — Merit-based for IIT, IIM, BITS, NLU, XLRI students. Interview required.',labh_mr:'IIT/IIM/BITS/NLU/XLRI विद्यार्थी',labh_en:'IIT/IIM/BITS/NLU/XLRI students',rakam:'₹65,000/year',link:'https://www.adityabirlascholars.net',docs_mr:'प्रवेश पत्र, मार्कशीट, Resume',docs_en:'Admission Letter, Marksheet, Resume',start:'Aug 2025',date:'Sep 2025',amt:65000,isNew:false},
+  {cat:'pg',org:'other',orgLabel:"L'Oreal India",gender:'female',title:"L'Oreal India For Young Women in Science",desc_mr:"L'Oreal India — PhD करणाऱ्या मुलींना विज्ञान संशोधनासाठी. Research proposal आवश्यक.",desc_en:"L'Oreal India — For girls doing PhD in Science. Research proposal required.",labh_mr:'PhD करणाऱ्या मुली (विज्ञान शाखा)',labh_en:'Girls pursuing PhD in Science',rakam:'₹2,50,000/year',link:'https://www.loreal.com/en/india',docs_mr:'PhD प्रवेश पत्र, Research Proposal',docs_en:'PhD Admission Letter, Research Proposal',start:'Sep 2025',date:'Nov 2025',amt:250000,isNew:false},
+  {cat:'grad',org:'tata',orgLabel:'Tata Trusts',gender:'all',title:'Tata Trust Scholarships',desc_mr:'Tata Trusts — विविध क्षेत्रांत शिक्षण घेणाऱ्या गुणवंत व आर्थिक दुर्बल विद्यार्थ्यांसाठी.',desc_en:'Tata Trusts — For meritorious and economically weak students across various fields.',labh_mr:'Graduation/PG विद्यार्थी, Merit + Need Based',labh_en:'Graduation/PG students, Merit + Need Based',rakam:'₹30,000-₹1,00,000/year',link:'https://www.tatatrusts.org',docs_mr:'आधार, मार्कशीट, उत्पन्न दाखला, SOP',docs_en:'Aadhaar, Marksheet, Income Certificate, SOP',start:'Jul 2025',date:'Sep 2025',amt:100000,isNew:false},
+  {cat:'all',org:'other',orgLabel:'Buddy4Study',gender:'all',title:'Buddy4Study Portal (5000+ Scholarships)',desc_mr:'भारतातील सर्वात मोठे Scholarship Portal. 5000+ scholarships एकाच ठिकाणी.',desc_en:"India's largest Scholarship Portal. 5000+ scholarships in one place.",labh_mr:'सर्व विद्यार्थी',labh_en:'All students',rakam:'₹1,000-₹5,00,000 (varies)',link:'https://www.buddy4study.com',docs_mr:'Profile नुसार',docs_en:'As per profile',start:'Year Round',date:'Year Round',amt:500000,isNew:false},
+];
+
+let notifications=[
+  {icon:'🆕',title_mr:'EBC Scholarship 2025 नवीन!',title_en:'EBC Scholarship 2025 New!',sub_mr:'MahaDBT — शेवट: Jan 2026',sub_en:'MahaDBT — Last: Jan 2026',read:false},
+  {icon:'🆕',title_mr:'HDFC Parivartan Scholarship खुली!',title_en:'HDFC Parivartan Open!',sub_mr:'₹50,000 — Oct 2025',sub_en:'₹50,000 — Oct 2025',read:false},
+  {icon:'🆕',title_mr:'AICTE Pragati मुलींसाठी',title_en:'AICTE Pragati for Girls',sub_mr:'₹50,000 — Aug 2025',sub_en:'₹50,000 — Aug 2025',read:false},
+  {icon:'⏰',title_mr:'NSP Deadline जवळ!',title_en:'NSP Deadline Near!',sub_mr:'Nov 2025 शेवटची तारीख',sub_en:'Last Date: Nov 2025',read:false},
+];
+
+// ── HELPERS ───────────────────────────────────────────────────
+function t(k){const m={btn_info:{mr:'📋 माहिती',en:'📋 Details'},btn_link:{mr:'🔗 अर्ज करा',en:'🔗 Apply Now'},btn_wa:{mr:'📤 WhatsApp',en:'📤 WhatsApp'},new_tag:{mr:'🆕 नवीन',en:'🆕 New'},start_lbl:{mr:'🟢 सुरू:',en:'🟢 From:'},end_lbl:{mr:'🔴 शेवट:',en:'🔴 Last:'},central_badge:{mr:'🏛 केंद्र',en:'🏛 Central'},f_fields:{mr:['लाभार्थी','रक्कम','अर्ज सुरू','शेवटची तारीख','अर्ज करा','कागदपत्रे'],en:['Beneficiary','Amount','Apply From','Last Date','Apply At','Documents']},modal_wa:{mr:'📤 WhatsApp वर शेअर करा',en:'📤 Share on WhatsApp'},warn_pvt:{mr:'⚠️ ही खाजगी संस्थेची शिष्यवृत्ती आहे. अर्ज करण्यापूर्वी अधिकृत वेबसाईट तपासा.',en:'⚠️ This is a private scholarship. Verify on the official website before applying.'},warn_gov:{mr:'✅ अधिकृत माहितीसाठी वरील वेबसाईट किंवा CSC केंद्र संपर्क करा.',en:'✅ For official info visit the website above or your nearest CSC centre.'}};return m[k]?.[lang]||k;}
+
+function getDesc(s){return s['desc_'+lang]||s.desc_mr||'';}
+function getLabh(s){return s['labh_'+lang]||s.labh_mr||'';}
+function getDocs(s){return s['docs_'+lang]||s.docs_mr||'';}
+
+// ── RENDER ────────────────────────────────────────────────────
+function getDataForSection(sec){return sec==='central'?centralData:sec==='state'?stateData:privateData;}
+
+function filterData(sec,data){
+  const q=document.getElementById('sInput').value.toLowerCase().trim();
+  if(sec==='central'){
+    const edu=document.getElementById('cf_edu').value,caste=document.getElementById('cf_caste').value,gen=document.getElementById('cf_gen').value,amt=document.getElementById('cf_amt').value;
+    return data.filter(s=>{
+      if(edu!=='all'&&s.cat!=='all'&&s.cat!==edu)return false;
+      if(caste!=='all'&&s.caste!=='all'&&s.caste!==caste)return false;
+      if(gen!=='all'&&s.gender!=='all'&&s.gender!==gen)return false;
+      if(amt==='10k'&&s.amt<10000)return false;if(amt==='25k'&&s.amt<25000)return false;if(amt==='50k'&&s.amt<50000)return false;
+      if(q&&!s.title.toLowerCase().includes(q)&&!getDesc(s).toLowerCase().includes(q)&&!getLabh(s).toLowerCase().includes(q))return false;
+      return true;
+    });
+  }
+  if(sec==='state'){
+    const st=document.getElementById('sf_state').value,caste=document.getElementById('sf_caste').value,edu=document.getElementById('sf_edu').value,gen=document.getElementById('sf_gen').value;
+    return data.filter(s=>{
+      if(st!=='all'&&s.state!==st)return false;
+      if(caste!=='all'&&s.caste!=='all'&&s.caste!==caste)return false;
+      if(edu!=='all'&&s.cat!=='all'&&s.cat!==edu)return false;
+      if(gen!=='all'&&s.gender!=='all'&&s.gender!==gen)return false;
+      if(q&&!s.title.toLowerCase().includes(q)&&!getDesc(s).toLowerCase().includes(q))return false;
+      return true;
+    });
+  }
+  const org=document.getElementById('pf_org').value,edu=document.getElementById('pf_edu').value,gen=document.getElementById('pf_gen').value,amt=document.getElementById('pf_amt').value;
+  return data.filter(s=>{
+    if(org!=='all'&&s.org!==org)return false;
+    if(edu!=='all'&&s.cat!=='all'&&s.cat!==edu)return false;
+    if(gen!=='all'&&s.gender!=='all'&&s.gender!==gen)return false;
+    if(amt==='10k'&&s.amt<10000)return false;if(amt==='25k'&&s.amt<25000)return false;if(amt==='50k'&&s.amt<50000)return false;
+    if(q&&!s.title.toLowerCase().includes(q)&&!getDesc(s).toLowerCase().includes(q))return false;
+    return true;
+  });
+}
+
+function buildCard(s,sec,gi){
+  const bkey=sec+'-'+gi,bm=bookmarks.has(bkey);
+  const tag=sec==='state'?`<span class="badge b-indigo">🗺️ ${s.stateLabel}</span>`:sec==='private'?`<span class="badge b-pink">🏢 ${s.orgLabel}</span>`:`<span class="badge b-green">${t('central_badge')}</span>`;
+  return`<div class="card${s.isNew?' is-new':''}${bm?' bookmarked':''}">
+    ${s.isNew?`<span class="new-tag">${t('new_tag')}</span>`:''}
+    <div class="ctop"><div style="display:flex;flex-wrap:wrap;gap:4px;">${tag}</div>
+      <div style="display:flex;align-items:center;gap:4px;"><span class="amt">${s.rakam.split('/')[0].split('-')[0].trim()}</span>
+      <button class="bmbtn" onclick="toggleBm('${sec}',${gi},this)">${bm?'⭐':'☆'}</button></div></div>
+    <h3>${s.title}</h3>
+    <p>${getDesc(s).substring(0,110)}...</p>
+    <div class="dates"><span class="dc dc-s">${t('start_lbl')} ${s.start}</span><span class="dc dc-e">${t('end_lbl')} ${s.date}</span></div>
+    <div class="actions">
+      <button class="btn btn-g" onclick="openInfo('${sec}',${gi})">${t('btn_info')}</button>
+      <a class="btn btn-b" href="${s.link}" target="_blank">${t('btn_link')}</a>
+      <button class="btn btn-w" onclick="shareWA('${sec}',${gi})">${t('btn_wa')}</button>
+      ${isAdmin?`<button class="btn btn-r" onclick="delS('${sec}',${gi})">🗑</button>`:''}
+    </div>
+  </div>`;
+}
+
+function renderSection(sec){
+  const data=getDataForSection(sec),list=filterData(sec,data);
+  const pre=sec[0];
+  const grid=document.getElementById(pre+'-grid'),nores=document.getElementById(pre+'-nores'),cnt=document.getElementById(pre+'-cnt'),rinfo=document.getElementById(pre+'-rinfo');
+  if(cnt)cnt.textContent='('+list.length+')';
+  if(rinfo)rinfo.textContent=list.length<data.length?(lang==='mr'?`Filter नुसार ${list.length} सापडल्या`:`${list.length} found`):'';
+  if(!list.length){grid.innerHTML='';nores.style.display='block';return;}
+  nores.style.display='none';
+  grid.innerHTML=list.map(s=>buildCard(s,sec,data.indexOf(s))).join('');
+}
+
+function doSearch(){renderSection(curMain);}
+function clearF(p){const m={'c':['cf_edu','cf_caste','cf_gen','cf_amt'],'s':['sf_state','sf_caste','sf_edu','sf_gen'],'p':['pf_org','pf_edu','pf_gen','pf_amt']};(m[p]||[]).forEach(id=>{const el=document.getElementById(id);if(el)el.value='all';});document.getElementById('sInput').value='';}
+
+function showPage(sec){
+  document.querySelectorAll('.main-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const tabMap={central:'tab_c',state:'tab_s',private:'tab_p',chatbot:'tab_ai',eligibility:'tab_e',bmark:'tab_b'};
+  document.getElementById(tabMap[sec])?.classList.add('active');
+  if(sec==='bmark'){document.getElementById('pg-bmark').classList.add('active');renderBookmarks();}
+  else if(sec==='eligibility'){document.getElementById('pg-eligibility').classList.add('active');}
+  else if(sec==='chatbot'){document.getElementById('pg-chatbot').classList.add('active');}
+  else{curMain=sec;document.getElementById('pg-'+sec).classList.add('active');renderSection(sec);}
+}
+
+// ── BOOKMARK ─────────────────────────────────────────────────
+function toggleBm(sec,i,btn){
+  const key=sec+'-'+i;
+  if(bookmarks.has(key)){bookmarks.delete(key);btn.textContent='☆';}else{bookmarks.add(key);btn.textContent='⭐';}
+  document.getElementById('bmc').textContent=bookmarks.size;
+  btn.closest('.card').classList.toggle('bookmarked');
+}
+function renderBookmarks(){
+  const grid=document.getElementById('bm-grid'),nores=document.getElementById('bm-nores');
+  if(!bookmarks.size){grid.innerHTML='';nores.style.display='block';return;}
+  nores.style.display='none';
+  const dm={central:centralData,state:stateData,private:privateData};
+  grid.innerHTML=[...bookmarks].map(key=>{const[sec,i]=key.split('-');const s=dm[sec]?.[+i];if(!s)return'';return buildCard(s,sec,+i);}).join('');
+}
+
+// ── INFO MODAL ────────────────────────────────────────────────
+function openInfo(sec,i){
+  const dm={central:centralData,state:stateData,private:privateData},s=dm[sec][i];
+  const fields=t('f_fields');
+  document.getElementById('mT').textContent=s.title;
+  const warn=sec==='private'?`<div style="margin-top:10px;padding:9px;background:#fef9c3;border-radius:7px;font-size:12px;color:#854d0e;">${t('warn_pvt')}</div>`:`<div style="margin-top:10px;padding:9px;background:#f0fdf4;border-radius:7px;font-size:12px;color:#166534;">${t('warn_gov')}</div>`;
+  document.getElementById('mB').innerHTML=`
+    <p style="font-size:12px;color:var(--sub);margin-bottom:11px;line-height:1.6;">${getDesc(s)}</p>
+    ${[[fields[0],getLabh(s)],[fields[1],s.rakam],[fields[2],s.start],[fields[3],s.date],[fields[4],`<a href="${s.link}" target="_blank" style="color:#2563eb;">${s.link}</a>`],[fields[5],getDocs(s)]]
+      .map(([k,v])=>`<div class="ir"><span class="il">🔹 ${k}:</span><span class="iv">${v}</span></div>`).join('')}
+    ${warn}
+    <button class="mwa" onclick="shareWA('${sec}',${i})">${t('modal_wa')}</button>`;
+  document.getElementById('infoOv').classList.add('open');
+}
+
+function shareWA(sec,i){
+  const dm={central:centralData,state:stateData,private:privateData},s=dm[sec][i];
+  const msg=`🎓 *${s.title}*\n\n📌 ${getLabh(s)}\n💰 ${s.rakam}\n📅 ${s.start} → ${s.date}\n🔗 ${s.link}\n📄 ${getDocs(s)}\n\n✅ Government Yojana Mitra`;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+function delS(sec,i){const dm={central:centralData,state:stateData,private:privateData};if(!confirm(`Delete "${dm[sec][i].title}"?`))return;dm[sec].splice(i,1);renderSection(sec);}
+
+function addSch(){
+  const tv=document.getElementById('f_t').value.trim(),dv=document.getElementById('f_d').value.trim();
+  if(!tv||!dv){alert(lang==='mr'?'नाव आणि माहिती भरा!':'Fill Name and Description!');return;}
+  const sec=document.getElementById('f_sec').value;
+  const obj={cat:document.getElementById('f_cat').value,caste:document.getElementById('f_caste').value,gender:document.getElementById('f_gen').value,title:tv,desc_mr:dv,desc_en:dv,labh_mr:document.getElementById('f_l').value||'—',labh_en:document.getElementById('f_l').value||'—',rakam:document.getElementById('f_r').value||'—',start:document.getElementById('f_s').value||'—',date:document.getElementById('f_e').value||'—',link:document.getElementById('f_lnk').value||'#',docs_mr:document.getElementById('f_doc').value||'—',docs_en:document.getElementById('f_doc').value||'—',amt:10000,isNew:true,state:'mh',stateLabel:'Maharashtra',org:'other',orgLabel:'Private'};
+  const dm={central:centralData,state:stateData,private:privateData};
+  dm[sec].unshift(obj);
+  notifications.unshift({icon:'🆕',title_mr:`नवीन: ${tv}`,title_en:`New: ${tv}`,sub_mr:'Admin ने add केली',sub_en:'Added by Admin',read:false});
+  updateNotif();
+  ['f_t','f_d','f_l','f_r','f_s','f_e','f_lnk','f_doc'].forEach(id=>document.getElementById(id).value='');
+  renderSection(sec);
+  const m=document.getElementById('sucmsg');m.style.display='block';setTimeout(()=>m.style.display='none',3000);
+}
+
+// ── AI CHATBOT ────────────────────────────────────────────────
+let chatHistory=[];
+
+async function sendChat(){
+  const input=document.getElementById('chatInput');
+  const q=input.value.trim();if(!q)return;
+  input.value='';addMsg(q,'user');showTyping();
+  try{
+    const allNames=[...centralData,...stateData,...privateData].map(s=>`${s.title}(${s.rakam},${s.link})`).join(';');
+    const sys=`You are an AI assistant for Government Yojana Mitra, an Indian scholarship website. Scholarships available: ${allNames}. Answer in the same language as user (Marathi or English). Be concise and helpful.`;
+    chatHistory.push({role:'user',content:q});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:sys,messages:chatHistory.slice(-8)})});
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||'माफ करा, उत्तर मिळाले नाही.';
+    chatHistory.push({role:'assistant',content:reply});
+    removeTyping();addMsg(reply,'bot');
+  }catch(e){removeTyping();addMsg(lang==='mr'?'❌ AI शी संपर्क होऊ शकला नाही.':'❌ Could not reach AI. Check internet.','bot');}
+}
+
+function addMsg(text,role){
+  const win=document.getElementById('chatWindow');
+  const div=document.createElement('div');div.className=`chat-msg ${role}`;
+  div.innerHTML=`<div class="chat-bubble ${role}-bubble">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+  win.appendChild(div);win.scrollTop=win.scrollHeight;
+}
+function showTyping(){
+  const win=document.getElementById('chatWindow');
+  const div=document.createElement('div');div.className='chat-msg bot';div.id='typingInd';
+  div.innerHTML='<div class="chat-bubble bot-bubble typing"><span></span><span></span><span></span></div>';
+  win.appendChild(div);win.scrollTop=win.scrollHeight;
+}
+function removeTyping(){const el=document.getElementById('typingInd');if(el)el.remove();}
+function askQuick(el){document.getElementById('chatInput').value=el.textContent||el.innerText;sendChat();}
+function clearChat(){chatHistory=[];const win=document.getElementById('chatWindow');win.innerHTML=`<div class="chat-msg bot"><div class="chat-bubble bot-bubble">👋 ${lang==='mr'?'Chat clear झाला! नवीन प्रश्न विचारा.':'Chat cleared! Ask a new question.'}</div></div>`;}
+
+// ── ELIGIBILITY ───────────────────────────────────────────────
+function checkEligibility(){
+  const edu=document.getElementById('el_edu_v').value,caste=document.getElementById('el_caste_v').value,gender=document.getElementById('el_gender_v').value,state=document.getElementById('el_state_v').value,marks=parseFloat(document.getElementById('el_marks_v').value)||0;
+  if(!edu&&!caste&&!gender){alert(lang==='mr'?'कृपया किमान एक field निवडा!':'Please select at least one field!');return;}
+  const all=[...centralData.map(s=>({...s,_sec:'central'})),...stateData.map(s=>({...s,_sec:'state'})),...privateData.map(s=>({...s,_sec:'private'}))];
+  const matched=all.filter(s=>{
+    if(edu&&s.cat!=='all'&&s.cat!==edu)return false;
+    if(caste&&s.caste&&s.caste!=='all'&&s.caste!==caste)return false;
+    if(gender&&s.gender&&s.gender!=='all'&&s.gender!==gender)return false;
+    if(s._sec==='state'&&state&&state!=='other'&&s.state&&s.state!==state)return false;
+    if(s.title.includes('Central Sector')&&marks>0&&marks<85)return false;
+    if(s.title.includes('NMMS')&&marks>0&&marks<55)return false;
+    return true;
+  });
+  document.getElementById('eli_start').style.display='none';
+  document.getElementById('eli_empty').style.display='none';
+  document.getElementById('eli_result').style.display='none';
+  if(!matched.length){document.getElementById('eli_empty').style.display='block';return;}
+  const cc=matched.filter(s=>s._sec==='central').length,sc=matched.filter(s=>s._sec==='state').length,pc=matched.filter(s=>s._sec==='private').length;
+  document.getElementById('eli_summary').innerHTML=lang==='mr'?`🎉 तुमच्यासाठी <strong>${matched.length} Scholarships</strong> सापडल्या! 🏛 केंद्र: ${cc} | 🗺️ राज्य: ${sc} | 🏢 खाजगी: ${pc}`:`🎉 <strong>${matched.length} Scholarships</strong> found for you! 🏛 Central: ${cc} | 🗺️ State: ${sc} | 🏢 Private: ${pc}`;
+  document.getElementById('eli_grid').innerHTML=matched.map(s=>{
+    const sec=s._sec,origIdx=(sec==='central'?centralData:sec==='state'?stateData:privateData).indexOf(s);
+    let score=0;if(edu&&(s.cat==='all'||s.cat===edu))score+=40;if(caste&&(s.caste==='all'||s.caste===caste))score+=30;if(gender&&(s.gender==='all'||s.gender===gender))score+=30;
+    const pct=Math.min(100,score),pc=pct>=80?'#16a34a':pct>=50?'#f59e0b':'#ef4444';
+    const tag=sec==='state'?`<span class="badge b-indigo">🗺️ ${s.stateLabel}</span>`:sec==='private'?`<span class="badge b-pink">🏢 ${s.orgLabel}</span>`:`<span class="badge b-green">${t('central_badge')}</span>`;
+    return`<div class="card${s.isNew?' is-new':''}">
+      ${s.isNew?`<span class="new-tag">${t('new_tag')}</span>`:''}
+      <div class="ctop"><div>${tag}</div><span class="amt">${s.rakam.split('/')[0].split('-')[0].trim()}</span></div>
+      <h3>${s.title}</h3><p>${getDesc(s).substring(0,100)}...</p>
+      <div style="margin:2px 0;"><div style="font-size:11px;color:var(--sub);margin-bottom:3px;">${lang==='mr'?'पात्रता:':'Eligibility:'} <strong style="color:${pc};">${pct}%</strong></div>
+        <div class="eli-bar"><div class="eli-fill" style="width:${pct}%;background:${pc};"></div></div></div>
+      <div class="dates"><span class="dc dc-s">${t('start_lbl')} ${s.start}</span><span class="dc dc-e">${t('end_lbl')} ${s.date}</span></div>
+      <div class="actions">
+        <button class="btn btn-g" onclick="openInfo('${sec}',${origIdx})">${t('btn_info')}</button>
+        <a class="btn btn-b" href="${s.link}" target="_blank">${t('btn_link')}</a>
+        <button class="btn btn-w" onclick="shareWA('${sec}',${origIdx})">${t('btn_wa')}</button>
+      </div></div>`;
+  }).join('');
+  document.getElementById('eli_result').style.display='block';
+}
+function clearEligibility(){['el_edu_v','el_caste_v','el_gender_v','el_income_v','el_state_v'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});document.getElementById('el_marks_v').value='';document.getElementById('eli_result').style.display='none';document.getElementById('eli_empty').style.display='none';document.getElementById('eli_start').style.display='block';}
+
+// ── NOTIFICATIONS ─────────────────────────────────────────────
+function updateNotif(){const u=notifications.filter(n=>!n.read).length;document.getElementById('nc').textContent=u;document.getElementById('ndot').style.display=u?'block':'none';}
+function toggleNotif(){
+  const p=document.getElementById('npanel');p.classList.toggle('open');
+  document.getElementById('nlist').innerHTML=notifications.length?notifications.map(n=>`<div class="ni" style="${n.read?'opacity:.55':''}"><span style="font-size:15px;">${n.icon}</span><div><strong style="font-size:12px;display:block;">${n['title_'+lang]||n.title_mr}</strong><span style="font-size:11px;color:var(--sub);">${n['sub_'+lang]||n.sub_mr}</span></div></div>`).join(''):'<div style="padding:18px;text-align:center;color:var(--sub);font-size:13px;">'+(lang==='mr'?'कोणत्याही सूचना नाहीत':'No notifications')+'</div>';
+}
+function markRead(){notifications.forEach(n=>n.read=true);updateNotif();document.getElementById('npanel').classList.remove('open');}
+document.addEventListener('click',e=>{const p=document.getElementById('npanel');if(p.classList.contains('open')&&!p.contains(e.target)&&!e.target.closest('#nBtn'))p.classList.remove('open');});
+
+// ── LANGUAGE ──────────────────────────────────────────────────
+function toggleLang(){
+  lang=lang==='mr'?'en':'mr';
+  document.getElementById('langBtn').textContent=lang==='mr'?'🇬🇧 EN':'🇮🇳 मर';
+  renderSection(curMain);
+}
+
+// ── LOGIN ─────────────────────────────────────────────────────
+function showLogin(){
+  if(isAdmin){isAdmin=false;document.getElementById('adminBtn').textContent='🔐 Admin';document.getElementById('adminBtn').className='nb yellow';document.getElementById('adminPanel').style.display='none';renderSection(curMain);return;}
+  document.getElementById('lerr').style.display='none';document.getElementById('lu').value='';document.getElementById('lp').value='';document.getElementById('loginOv').classList.add('open');
+}
+function doLogin(){
+  if(document.getElementById('lu').value.trim()===AU&&document.getElementById('lp').value===AP){isAdmin=true;document.getElementById('loginOv').classList.remove('open');document.getElementById('adminBtn').textContent='🚪 Logout';document.getElementById('adminBtn').className='nb red';document.getElementById('adminPanel').style.display='block';renderSection(curMain);}
+  else document.getElementById('lerr').style.display='block';
+}
+
+// ── DARK MODE ─────────────────────────────────────────────────
+function toggleDark(){const d=document.documentElement.getAttribute('data-theme')==='dark';document.documentElement.setAttribute('data-theme',d?'light':'dark');document.getElementById('darkBtn').textContent=d?'🌙':'☀️';}
+
+// ── INIT ──────────────────────────────────────────────────────
+updateNotif();
+renderSection('central');
+</script>
 </body>
-      </html>
+</html>
